@@ -53,7 +53,7 @@ public class TestForos {
 		}
 	}
 
-	//@Test
+	@Test
 	public void testForos2() {
 		Usuario u1 = udao.validaLogin("uname1", "password");
 		Usuario u2 = udao.validaLogin("uname2", "password");

@@ -212,6 +212,9 @@ public class ForumDAO implements ForoDao {
 		if (foro.getFecha() == null) {
 			foro.setFecha(new Date());
 		}
+		//TODO Actualmente no hay manera de publicar pero cuando se tenga,
+		//hay que dejar status 2 y hasta que el usuario decida publicar se le pone 1.
+		foro.setStatus(1);
 		sess.save(foro);
 	}
 

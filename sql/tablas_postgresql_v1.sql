@@ -1,4 +1,4 @@
---Scripts para crear la base de datos. Diagrama mental.
+﻿--Scripts para crear la base de datos. Diagrama mental.
 
 --
 --Primero lo basico, infraestructura
@@ -18,7 +18,7 @@ CREATE TABLE usuario(
 
 --Ligas a otros sitios (aqui se definen los sitios)
 CREATE TABLE sitio(
-	sid   INTEGER,
+        sid SERIAL PRIMARY KEY,
 	sitio VARCHAR(80) NOT NULL UNIQUE,
 	url   VARCHAR(2000),
 	descripcion VARCHAR(200),
@@ -49,7 +49,7 @@ CREATE TABLE hab_usuario(
 --Certificados relacionados con Java
 CREATE TABLE certificado(
 	cid SERIAL PRIMARY KEY,
-	nombre VARCHAR(80) NOT NULL,
+	nombre VARCHAR(80) NOT NULL
 );
 
 --Los certificados que tiene un usuario
@@ -246,25 +246,25 @@ CREATE TABLE blog_coment(
 	cid   SERIAL PRIMARY KEY,
 	bid   INTEGER REFERENCES blog_post(bid) ON DELETE CASCADE,
 	uid   INTEGER NOT NULL REFERENCES usuario(uid)  ON DELETE CASCADE,
-	rt    INTEGER NOT NULL REFERENCES blog_coment(cid) ON DELETE RESTRICT --nullify
+	rt    INTEGER NOT NULL REFERENCES blog_coment(cid) ON DELETE RESTRICT, --nullify
 	fecha TIMESTAMP NOT NULL,
 	coment VARCHAR(2000) NOT NULL
 );
 
 CREATE TABLE blog_tag(
 	tid   serial primary key,
-	tag   VARCHAR(80) NOT NULL UNIQUE,
+	tag   VARCHAR(80) NOT NULL UNIQUE
 );
 CREATE TABLE tag_blog_join(
 	tid INTEGER,
 	bid INTEGER,
-	primary key(tid, bid);
+	primary key(tid, bid)
 );
 
 
 CREATE TABLE voto_blog(
 	vid   SERIAL PRIMARY  KEY,
-	bid   INTEGER NOT NULL REFERENCES blod(bid)  ON DELETE CASCADE,
+	bid   INTEGER NOT NULL REFERENCES blog_post(bid)  ON DELETE CASCADE,
 	uid   INTEGER NOT NULL REFERENCES usuario(uid)  ON DELETE CASCADE,
 	fecha TIMESTAMP NOT NULL,
 	up    BOOLEAN NOT NULL DEFAULT true
@@ -371,7 +371,7 @@ CREATE TABLE chamba_anuncio(
 );
 
 CREATE TABLE chamba_aviso(
-  avid SERIAL PRIMARY KEY
+  avid SERIAL PRIMARY KEY,
   eid  INTEGER REFERENCES chamba_empresa(eid) ON DELETE CASCADE,
   fecha_alta timestamp NOT NULL DEFAULT localtimestamp,
   fecha_expira timestamp NOT NULL
@@ -392,3 +392,7 @@ CREATE TABLE chamba_voto_aviso(
   fecha TIMESTAMP NOT NULL,
   up    BOOLEAN NOT NULL DEFAULT true
 );
+
+insert into tema_foro(  tema, descripcion, fecha_alta ) values ( 'Java', 'Todo lo relacionado al mejor lenguaje de programacion', '1960-01-01 23:03:20' );
+
+commit;

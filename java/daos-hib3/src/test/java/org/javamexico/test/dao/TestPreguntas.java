@@ -49,9 +49,11 @@ public class TestPreguntas {
 		//Vamos a obtener todas excepto la mas vieja
 		List<Pregunta> pregs = qdao.getPreguntasRecientes(1, 10);
 		System.out.printf("Probando pregunta mas vieja (%s) solamente hubo %d%n", new Date(oldest), pregs.size());
-		for (Pregunta q : pregs) {
+		if( pregs.size() > 0 ) {
+		    for (Pregunta q : pregs) {
 			Assert.assertTrue(q.getFechaPregunta().getTime() > oldest);
-		}
+		    }
+                }
 	}
 
 	private void printPregunta(Pregunta p) {
