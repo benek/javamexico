@@ -1,0 +1,9 @@
+<html t:type="layout" t:title="JavaMexico Login"
+      t:sidebarTitle="nothing"
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd"
+      xmlns:p="tapestry:parameter">
+
+Aquí debe ir una forma para darse de alta. Validamos datos, registramos al usuario en status inactivo,
+le generamos un token y le enviamos un correo para que se termine de registrar.
+
+</html>
