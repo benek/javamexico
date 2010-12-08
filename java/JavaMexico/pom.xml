@@ -136,6 +136,11 @@ of testing facilities designed for use with TestNG (http://testng.org/), so it's
                 <version>6.1.9</version>
                 <configuration>
                     <!-- Log to the console. -->
+                    <connectors>
+                    <connector implementation="org.mortbay.jetty.nio.SelectChannelConnector">
+                    <port>8080</port>
+                    </connector>
+                    </connectors>
                     <requestLog implementation="org.mortbay.jetty.NCSARequestLog">
                         <!-- This doesn't do anything for Jetty, but is a workaround for a Maven bug
                              that prevents the requestLog from being set. -->
