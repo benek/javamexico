@@ -2,8 +2,9 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.javamexico</groupId>
   <artifactId>javamexico-hibernate3</artifactId>
-  <name>JavaMexico Hibernate 3 DAOs</name>
   <version>0.0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
+  <name>JavaMexico Hibernate 3 DAOs</name>
   <repositories>
   </repositories>
   <dependencies>
@@ -117,13 +118,25 @@
     	<type>jar</type>
     	<scope>compile</scope>
     </dependency>
+      <dependency>
+          <groupId>org.slf4j</groupId>
+          <artifactId>jcl-over-slf4j</artifactId>
+          <version>1.6.1</version>
+          <type>jar</type>
+          <scope>compile</scope>
+      </dependency>
   </dependencies>
+  <url>http://code.google.com/p/javamexico/</url>
+  <organization>
+  	<name>javaMexico</name>
+  	<url>http://javamexico.org/</url>
+  </organization>
   <build>
   <plugins>
     <plugin>
       <groupId>org.apache.maven.plugins</groupId>
       <artifactId>maven-compiler-plugin</artifactId>
-      <version>2.3.1</version>
+      <version>2.3.2</version>
       <configuration>
         <source>1.6</source>
         <target>1.6</target>

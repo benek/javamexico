@@ -70,7 +70,7 @@ public class Empresa {
 		this.password = password;
 	}
 
-	@Column(name="contacto")
+	@Column(name="nom_contacto")
 	public String getNombreContacto() {
 		return nombreContacto;
 	}

@@ -40,6 +40,7 @@ public class Usuario implements Comparable<Usuario> {
 	private int uid;
 	private String uname;
 	private String nombre;
+    private String email;
 	private String passwd;
 	private Date alta;
 	private int status;
@@ -71,6 +72,15 @@ public class Usuario implements Comparable<Usuario> {
 	public void setNombre(String value) {
 		nombre = value;
 	}
+
+    //TODO ponerle regex o algo para validar formato de mail
+    @Column(unique=true, name="email", updatable=true)
+    public String getEmail() {
+        return email;
+    }
+    public void setEmail(String value) {
+        email = value;
+    }
 
 	public String getPassword() {
 		return passwd;

@@ -44,6 +44,7 @@
         	</dependency>
         </dependencies>
         <description>Clases principales (entidades, daos) para JavaMexico.org</description>
+        <url>http://code.google.com/p/javamexico/</url>
         <developers>
         	<developer>
         		<id>ezl</id>
@@ -54,13 +55,18 @@
         		</roles>
         	</developer>
         </developers>
-    <build>
+        <organization>
+        	<name>javaMexico</name>
+        	<url>http://javamexico.org/</url>
+        </organization>
+        <build>
         <finalName>javamexico-core</finalName>
         <sourceDirectory>${project.basedir}/src</sourceDirectory>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.3.2</version>
                 <configuration>
                     <source>1.6</source>
                     <target>1.6</target>

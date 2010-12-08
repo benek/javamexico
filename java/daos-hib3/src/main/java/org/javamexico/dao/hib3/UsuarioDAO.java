@@ -129,10 +129,11 @@ public class UsuarioDAO implements UserDao {
 				u.setPassword(Base64.base64Encode(sha, 0, sha.length));
 			} catch (GeneralSecurityException ex) {
 				//No se pudo
-				log.error(String.format("Cifrando password de nuevo usuario %s", u.getUsername()), ex);
-				throw new DataIntegrityViolationException("No se puede modificar el password", ex);
+				log.error("Cifrando password de nuevo usuario {}", u.getUsername(), ex);
+				throw new DataIntegrityViolationException("No se puede modificar el password del usuario", ex);
 			}
 		}
+        sess.evict(u2);
 		sess.update(u);
 	}
 

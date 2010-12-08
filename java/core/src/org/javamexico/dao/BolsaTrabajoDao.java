@@ -6,6 +6,7 @@ import java.util.Set;
 
 import org.javamexico.entity.TagUsuario;
 import org.javamexico.entity.Usuario;
+import org.javamexico.entity.bolsa.Empresa;
 import org.javamexico.entity.bolsa.Oferta;
 import org.javamexico.entity.bolsa.Tag;
 import org.javamexico.entity.bolsa.VotoOferta;
@@ -27,5 +28,10 @@ public interface BolsaTrabajoDao {
 	public VotoOferta votaOferta(Usuario autor, Oferta oferta, boolean up);
 
 	public VotoOferta findVoto(Usuario user, Oferta oferta);
+
+    /** Devuelve una lista de todas las empresas registradas en el sistema. */
+    public List<Empresa> getEmpresas();
+
+    public void update(Empresa e);
 
 }

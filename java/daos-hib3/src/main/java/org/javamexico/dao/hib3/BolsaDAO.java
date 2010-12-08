@@ -1,5 +1,7 @@
 package org.javamexico.dao.hib3;
 
+import java.security.GeneralSecurityException;
+import java.security.MessageDigest;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -12,13 +14,16 @@ import org.hibernate.criterion.Restrictions;
 import org.javamexico.dao.BolsaTrabajoDao;
 import org.javamexico.entity.TagUsuario;
 import org.javamexico.entity.Usuario;
+import org.javamexico.entity.bolsa.Empresa;
 import org.javamexico.entity.bolsa.Oferta;
 import org.javamexico.entity.bolsa.Tag;
 import org.javamexico.entity.bolsa.VotoOferta;
+import org.javamexico.util.Base64;
 import org.javamexico.util.PrivilegioInsuficienteException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Required;
+import org.springframework.dao.DataIntegrityViolationException;
 
 /** Implementacion del DAO de bolsa de trabajo, usando Hibernate 3 con soporte de Spring.
  * 
@@ -124,5 +129,32 @@ public class BolsaDAO implements BolsaTrabajoDao {
 		return (VotoOferta)sess.createCriteria(VotoOferta.class).add(Restrictions.eq("usuario", user)).add(
 				Restrictions.eq("oferta", oferta)).uniqueResult();
 	}
+
+    @SuppressWarnings("unchecked")
+    public List<Empresa> getEmpresas() {
+        Session sess = sfact.getCurrentSession();
+        return sess.createCriteria(Empresa.class).list();
+    }
+
+    public void update(Empresa e) {
+        Session sess = sfact.getCurrentSession();
+        Empresa e2 = (Empresa)sess.get(Empresa.class, e.getEid());
+        if (e2.getPassword() == null || !e2.getPassword().equals(e.getPassword())) {
+            try {
+                //TODO esto se puede optimizar pero sin usar mucha memoria, tal vez un pool de MD's
+                MessageDigest md = MessageDigest.getInstance("SHA-1");
+                md.update(String.format("%d:%s/%s", e.getEid(), e.getNombre(), e.getPassword()).getBytes());
+                byte[] sha = md.digest();
+                //Codificar a base 64
+                e.setPassword(Base64.base64Encode(sha, 0, sha.length));
+            } catch (GeneralSecurityException ex) {
+                //No se pudo
+                log.error("Cifrando password de empresa {}", e.getNombre(), ex);
+                throw new DataIntegrityViolationException("No se puede modificar el password de la empresa", ex);
+            }
+        }
+        sess.evict(e2);
+        sess.update(e);
+    }
 
 }

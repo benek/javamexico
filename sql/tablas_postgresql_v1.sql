@@ -1,4 +1,4 @@
-﻿--Scripts para crear la base de datos. Diagrama mental.
+--Scripts para crear la base de datos. Diagrama mental.
 
 --
 --Primero lo basico, infraestructura
@@ -8,6 +8,7 @@
 CREATE TABLE usuario(
 	uid        SERIAL PRIMARY KEY,
 	uname      VARCHAR(20) NOT NULL UNIQUE,
+	email      VARCHAR(80) NOT NULL UNIQUE,
 	password   VARCHAR(40) NOT NULL,
 	fecha_alta TIMESTAMP NOT NULL,
 	nombre     VARCHAR(80) NOT NULL,
