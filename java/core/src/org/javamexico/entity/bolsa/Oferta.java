@@ -1,5 +1,7 @@
 package org.javamexico.entity.bolsa;
 
+import org.hibernate.annotations.Formula;
+
 import java.util.Date;
 import java.util.Set;
 
@@ -37,6 +39,7 @@ public class Oferta {
 	private String fon1;
 	private String fon2;
 	private Set<Tag> tags;
+    int votos;
 
 	@Id
 	@SequenceGenerator(name="pk", sequenceName="chamba_oferta_ofid_seq", allocationSize=1)
@@ -143,4 +146,11 @@ public class Oferta {
 		tags = value;
 	}
 
+    @Formula("((select count(*) from chamba_voto_oferta cvo where cvo.ofid=ofid and cvo.up)-(select count(*) from chamba_voto_oferta cvo where cvo.ofid=ofid and not cvo.up))")
+    public int getVotos() {
+        return votos;
+    }
+    public void setVotos(int value) {
+        votos = value;
+    }
 }

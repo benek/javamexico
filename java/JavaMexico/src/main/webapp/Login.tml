@@ -6,8 +6,8 @@
 <t:loginpanel t:page="${page}" />
 
 <br/>
-Olvidaste tu password?
+<t:pagelink page="olvidapassword">Olvidaste tu password?</t:pagelink>
 <br/>
-No estas registrado? Date de alta aqui
+No estás registrado? <t:pagelink page="registro">Date de alta aquí</t:pagelink>
 
 </html>

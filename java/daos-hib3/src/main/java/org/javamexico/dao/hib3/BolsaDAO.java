@@ -82,7 +82,7 @@ public class BolsaDAO implements BolsaTrabajoDao {
 
     @Override
 	@SuppressWarnings("unchecked")
-	public List<Oferta> getOfertasConTags(List<Tag> tags) {
+	public List<Oferta> getOfertasConTags(Set<Tag> tags) {
 		Session sess = sfact.getCurrentSession();
 		Set<Integer> ofs = new TreeSet<Integer>();
 		for (Tag t : tags) {
@@ -102,7 +102,7 @@ public class BolsaDAO implements BolsaTrabajoDao {
 
 	@Override
 	@SuppressWarnings("unchecked")
-	public List<Oferta> getOfertasConTagsUsuario(List<TagUsuario> tags) {
+	public List<Oferta> getOfertasConTagsUsuario(Set<TagUsuario> tags) {
 		Set<Integer> ofs = new TreeSet<Integer>();
 		Session sess = sfact.getCurrentSession();
 		for (TagUsuario tu : tags) {
@@ -116,7 +116,17 @@ public class BolsaDAO implements BolsaTrabajoDao {
 		return sess.createCriteria(Oferta.class).add(Restrictions.in("ofid", ofs)).list();
 	}
 
-	@Override
+    @Override
+    public Oferta getOferta(int ofid) {
+        Session sess = sfact.getCurrentSession();
+        Oferta of = (Oferta)sess.get(Oferta.class, ofid);
+        if (of != null) {
+            of.getTags().size();
+        }
+        return of;
+    }
+
+    @Override
 	public VotoOferta votaOferta(Usuario user, Oferta oferta, boolean up) {
 		if (!up && user.getReputacion() < minRepVotaO) {
 			throw new PrivilegioInsuficienteException();

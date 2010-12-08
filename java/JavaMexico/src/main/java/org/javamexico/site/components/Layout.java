@@ -43,7 +43,7 @@ public class Layout extends Pagina {
 
     public String[] getPageNames()
     {
-      return new String[] { "Index", "Foros", "Preguntas" };
+      return new String[] { "Index", "Foros", "Preguntas", "Bolsa" };
     }
 
     void onActionFromLogout() {

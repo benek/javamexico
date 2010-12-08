@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html t:type="layout" t:title="JavaMexico :: Bolsa de Trabajo"
+      t:sidebarTitle="Ofertas similares"
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd"
+      xmlns:p="tapestry:parameter">
+
+<h2>${oferta.titulo}</h2>
+<cite>Por ${oferta.empresa.nombre} el ${oferta.fechaAlta}</cite>
+
+<div>${oferta.votos} votos
+	<t:if test="userExists">
+		<t:actionlink t:id="voteOfertaUp">Voto UP</t:actionlink>
+		| <t:actionlink t:id="voteOfertaDown">Voto DOWN</t:actionlink>
+	</t:if>
+</div>
+<p>${oferta.resumen}</p>
+<p>${oferta.descripcion}</p>
+<div>Tags: <t:loop t:id="oftags" t:source="oferta.tags" t:value="tag">
+	<t:pagelink t:context="${tag.tag}" t:page="bolsa/index" class="qtag">${tag.tag}</t:pagelink>&nbsp;
+</t:loop></div>
+
+<hr/>
+
+<p:sidebar>
+	<div>Ofertas similares</div>
+	<t:loop t:id="fsims" t:source="ofertasSimilares" t:value="otraof" t:element="div">
+    	<t:if test="ofertaDistinta"><t:pagelink t:page="bolsa/ver" t:context="${otraof.ofid}">${otraof.titulo}</t:pagelink></t:if>
+	</t:loop>
+    <t:if test="userExists">
+	<div>Mis ofertas:</div>
+    <t:loop t:id="fmios" t:source="misOfertas" t:value="otraof" t:element="div">
+    	<t:if test="ofertaDistinta"><t:pagelink t:page="bolsa/ver" t:context="${otraof.ofid}">${otraof.titulo}</t:pagelink></t:if>
+	</t:loop></t:if>
+</p:sidebar>
+
+</html>

@@ -22,9 +22,11 @@ public interface BolsaTrabajoDao {
 	public List<Oferta> getOfertasConTag(Tag tag);
     public List<Oferta> getOfertasConTag(String tag);
 
-	public List<Oferta> getOfertasConTags(List<Tag> tags);
+	public List<Oferta> getOfertasConTags(Set<Tag> tags);
 
-	public List<Oferta> getOfertasConTagsUsuario(List<TagUsuario> tags);
+	public List<Oferta> getOfertasConTagsUsuario(Set<TagUsuario> tags);
+
+    public Oferta getOferta(int ofid);
 
 	public VotoOferta votaOferta(Usuario autor, Oferta oferta, boolean up);
 

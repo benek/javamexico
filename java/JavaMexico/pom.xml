@@ -5,7 +5,7 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
     <name>JavaMexico Tapestry 5 Application</name>
-        <dependencies>
+    <dependencies>
         <dependency>
             <groupId>org.apache.tapestry</groupId>
             <artifactId>tapestry-core</artifactId>
@@ -49,16 +49,9 @@ of testing facilities designed for use with TestNG (http://testng.org/), so it's
             <scope>provided</scope>
         </dependency>
         <dependency>
-        	<groupId>org.javamexico</groupId>
-        	<artifactId>javamexico-core</artifactId>
-        	<version>1.0-SNAPSHOT</version>
-        	<type>jar</type>
-        	<scope>compile</scope>
-        </dependency>
-        <dependency>
         	<groupId>org.apache.tapestry</groupId>
         	<artifactId>tapestry-spring</artifactId>
-        	<version>5.1.0.5</version>
+        	<version>${tapestry-release-version}</version>
         	<type>jar</type>
         	<scope>compile</scope>
         </dependency>
@@ -68,6 +61,12 @@ of testing facilities designed for use with TestNG (http://testng.org/), so it's
         	<version>3.0.5.RELEASE</version>
         	<type>jar</type>
         	<scope>compile</scope>
+        	<exclusions>
+        		<exclusion>
+        			<artifactId>commons-logging</artifactId>
+        			<groupId>commons-logging</groupId>
+        		</exclusion>
+        	</exclusions>
         </dependency>
         <dependency>
         	<groupId>org.springframework</groupId>
@@ -81,12 +80,6 @@ of testing facilities designed for use with TestNG (http://testng.org/), so it's
         	<artifactId>spring-tx</artifactId>
         	<version>3.0.5.RELEASE</version>
         	<type>jar</type>
-        	<scope>compile</scope>
-        </dependency>
-        <dependency>
-        	<groupId>org.javamexico</groupId>
-        	<artifactId>javamexico-hibernate3</artifactId>
-        	<version>0.0.1-SNAPSHOT</version>
         	<scope>compile</scope>
         </dependency>
         <dependency>
@@ -104,8 +97,23 @@ of testing facilities designed for use with TestNG (http://testng.org/), so it's
         	<scope>compile</scope>
         </dependency>
 
+        <dependency>
+        	<groupId>org.slf4j</groupId>
+        	<artifactId>slf4j-log4j12</artifactId>
+        	<version>1.6.1</version>
+        	<type>jar</type>
+        	<scope>compile</scope>
+        </dependency>
+        <dependency>
+        	<groupId>org.javamexico</groupId>
+        	<artifactId>javamexico-hibernate3</artifactId>
+        	<version>0.0.1-SNAPSHOT</version>
+        	<type>jar</type>
+        	<scope>compile</scope>
+        </dependency>
     </dependencies>
         <description>Aplicacion web para JavaMexico.org</description>
+        <url>http://code.google.com/p/javamexico/</url>
         <developers>
         	<developer>
         		<id>ezl</id>
@@ -116,15 +124,20 @@ of testing facilities designed for use with TestNG (http://testng.org/), so it's
         		</roles>
         	</developer>
         </developers>
-    <build>
+        <organization>
+        	<name>javaMexico</name>
+        	<url>http://javamexico.org/</url>
+        </organization>
+        <build>
         <finalName>JavaMexico</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.3.2</version>
                 <configuration>
-                    <source>1.5</source>
-                    <target>1.5</target>
+                    <source>1.6</source>
+                    <target>1.6</target>
                     <optimize>true</optimize>
                 </configuration>
             </plugin>
@@ -133,7 +146,7 @@ of testing facilities designed for use with TestNG (http://testng.org/), so it's
             <plugin>
                 <groupId>org.mortbay.jetty</groupId>
                 <artifactId>maven-jetty-plugin</artifactId>
-                <version>6.1.9</version>
+                <version>6.1.26</version>
                 <configuration>
                     <!-- Log to the console. -->
                     <connectors>
@@ -167,18 +180,6 @@ of testing facilities designed for use with TestNG (http://testng.org/), so it's
     </reporting>
 
     <repositories>
-
-        <!-- This repository is only needed if the Tapestry released artifacts haven't made it to the central Maven repository yet. -->
-        <repository>
-            <id>tapestry</id>
-            <url>http://tapestry.formos.com/maven-repository/</url>
-        </repository>
-
-        <!-- This repository is only needed when the tapestry-release-version is a snapshot release. -->
-        <repository>
-            <id>tapestry-snapshots</id>
-            <url>http://tapestry.formos.com/maven-snapshot-repository/</url>
-        </repository>
 
         <repository>
             <id>codehaus.snapshots</id>
