@@ -20,10 +20,11 @@ public interface BolsaTrabajoDao {
 	public List<Oferta> getOfertasRecientes(Date desde);
 
 	public List<Oferta> getOfertasConTag(Tag tag);
+    public List<Oferta> getOfertasConTag(String tag);
 
-	public List<Oferta> getOfertasConTags(Set<Tag> tags);
+	public List<Oferta> getOfertasConTags(List<Tag> tags);
 
-	public List<Oferta> getOfertasConTagsUsuario(Set<TagUsuario> tags);
+	public List<Oferta> getOfertasConTagsUsuario(List<TagUsuario> tags);
 
 	public VotoOferta votaOferta(Usuario autor, Oferta oferta, boolean up);
 
@@ -33,5 +34,9 @@ public interface BolsaTrabajoDao {
     public List<Empresa> getEmpresas();
 
     public void update(Empresa e);
+
+    public void addTag(String tag, Oferta oferta);
+    public List<Tag> findMatchingTags(String parcial);
+    public List<Tag> getTagsPopulares(int max);
 
 }

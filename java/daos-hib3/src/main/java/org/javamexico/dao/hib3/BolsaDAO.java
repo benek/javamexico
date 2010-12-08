@@ -10,6 +10,8 @@ import java.util.TreeSet;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.MatchMode;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.javamexico.dao.BolsaTrabajoDao;
 import org.javamexico.entity.TagUsuario;
@@ -66,16 +68,28 @@ public class BolsaDAO implements BolsaTrabajoDao {
 		return new ArrayList<Oferta>(tag.getOfertas());
 	}
 
-	@Override
+    @Override
+    public List<Oferta> getOfertasConTag(String tag) {
+        Session sess = sfact.getCurrentSession();
+        @SuppressWarnings("unchecked")
+        List<Tag> tags = sess.createCriteria(Tag.class).add(Restrictions.ilike("tag", tag, MatchMode.EXACT)).setMaxResults(1).list();
+        List<Oferta> list = null;
+        if (tags.size() > 0) {
+            list = new ArrayList<Oferta>(tags.get(0).getOfertas());
+        }
+        return list;
+    }
+
+    @Override
 	@SuppressWarnings("unchecked")
-	public List<Oferta> getOfertasConTags(Set<Tag> tags) {
+	public List<Oferta> getOfertasConTags(List<Tag> tags) {
 		Session sess = sfact.getCurrentSession();
 		Set<Integer> ofs = new TreeSet<Integer>();
 		for (Tag t : tags) {
 			sess.refresh(t);
 			Set<Oferta> _o = t.getOfertas();
 			//Por alguna rarisima razon mas alla de mi comprension,
-			//si agrego el foro directamente a la lista, en algun momento truena esto
+			//si agrego la oferta directamente a la lista, en algun momento truena esto
 			//con un ClassCastException que no me da stack trace. Algun pedo muy satanico.
 			//Asi que agregamos la llave de cada foro y luego hacemos un query.
 			//Ineficiente, pero al menos funciona.
@@ -88,7 +102,7 @@ public class BolsaDAO implements BolsaTrabajoDao {
 
 	@Override
 	@SuppressWarnings("unchecked")
-	public List<Oferta> getOfertasConTagsUsuario(Set<TagUsuario> tags) {
+	public List<Oferta> getOfertasConTagsUsuario(List<TagUsuario> tags) {
 		Set<Integer> ofs = new TreeSet<Integer>();
 		Session sess = sfact.getCurrentSession();
 		for (TagUsuario tu : tags) {
@@ -155,6 +169,45 @@ public class BolsaDAO implements BolsaTrabajoDao {
         }
         sess.evict(e2);
         sess.update(e);
+    }
+
+    @Override
+    public void addTag(String tag, Oferta oferta) {
+        Session sess = sfact.getCurrentSession();
+        @SuppressWarnings("unchecked")
+        List<Tag> tags = sess.createCriteria(Tag.class).add(Restrictions.ilike("tag", tag)).setMaxResults(1).list();
+        Tag elTag = null;
+        if (tags.size() == 0) {
+            elTag = new Tag();
+            elTag.setTag(tag);
+            sess.save(elTag);
+            sess.flush();
+        } else {
+            elTag = tags.get(0);
+        }
+        if (oferta.getTags() == null) {
+            sess.refresh(oferta);
+        }
+        oferta.getTags().add(elTag);
+        sess.update(oferta);
+        oferta.getTags().size();
+    }
+
+    @Override
+    public List<Tag> findMatchingTags(String parcial) {
+        Session sess = sfact.getCurrentSession();
+        @SuppressWarnings("unchecked")
+        List<Tag> tags = sess.createCriteria(Tag.class).add(
+                Restrictions.ilike("tag", parcial, MatchMode.ANYWHERE)).list();
+        return tags;
+    }
+
+    @Override
+    public List<Tag> getTagsPopulares(int max) {
+        Session sess = sfact.getCurrentSession();
+        @SuppressWarnings("unchecked")
+        List<Tag> tags = sess.createCriteria(Tag.class).addOrder(Order.desc("count")).setMaxResults(max).list();
+        return tags;
     }
 
 }
