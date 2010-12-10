@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.MatchMode;
@@ -51,15 +52,21 @@ public class BolsaDAO implements BolsaTrabajoDao {
 	}
 
 	@Override
-	public List<Oferta> getOfertasRecientes(Date desde) {
+	public List<Oferta> getOfertasRecientes(int cuantas) {
 		Session sess = sfact.getCurrentSession();
-		//TODO maxresults debe ser parm
 		@SuppressWarnings("unchecked")
-		List<Oferta> ofs = sess.createCriteria(Oferta.class).add(Restrictions.eq("status", 0)).add(
-				Restrictions.gt("fechaAlta", desde)).add(Restrictions.lt("fechaExpira", new Date())
-				).setMaxResults(20).list();
+		List<Oferta> ofs = sess.createCriteria(Oferta.class).add(Restrictions.eq("status", 1)).add(
+				Restrictions.gt("fechaExpira", new Date())).addOrder(Order.desc("fechaAlta")).setMaxResults(cuantas).list();
 		return ofs;
 	}
+
+    public List<Oferta> getOfertasPorExpirar(int cuantas) {
+        Session sess = sfact.getCurrentSession();
+        @SuppressWarnings("unchecked")
+        List<Oferta> ofs = sess.createCriteria(Oferta.class).add(Restrictions.eq("status", 1)).add(
+                Restrictions.gt("fechaExpira", new Date())).addOrder(Order.asc("fechaExpira")).setMaxResults(cuantas).list();
+        return ofs;
+    }
 
 	@Override
 	public List<Oferta> getOfertasConTag(Tag tag) {
@@ -218,6 +225,16 @@ public class BolsaDAO implements BolsaTrabajoDao {
         @SuppressWarnings("unchecked")
         List<Tag> tags = sess.createCriteria(Tag.class).addOrder(Order.desc("count")).setMaxResults(max).list();
         return tags;
+    }
+
+    @SuppressWarnings("unchecked")
+    public List<Oferta> getOfertas(Empresa emp, boolean pubsOnly) {
+        Session sess = sfact.getCurrentSession();
+        Criteria crit = sess.createCriteria(Oferta.class).add(Restrictions.eq("empresa", emp));
+        if (pubsOnly) {
+            crit.add(Restrictions.eq("status", 1));
+        }
+        return crit.list();
     }
 
 }

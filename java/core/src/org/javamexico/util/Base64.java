@@ -111,7 +111,7 @@ public class Base64 {
 	}
 
 	/** Decodifica una cadena de base 64 en variante segura para URL's.
-	 * @param input La cadena codificada. Puede estar separada en renglones.
+	 * @param b64 La cadena codificada. Puede estar separada en renglones.
 	 * @return El arreglo de bytes resultante de haber decodificado la cadena.
 	 */
 	public static byte[] base64Decode(String b64) {

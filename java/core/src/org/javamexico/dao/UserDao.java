@@ -34,6 +34,8 @@ public interface UserDao {
 
 	/** Devuelve al usuario con la clave especificada. */
 	public Usuario getUser(int id);
+    /** Devuelve el usuario que tenga el email indicado. */
+    public Usuario findByEmail(String email);
 
 	/** Inserta un nuevo usuario a la base de datos. */
 	public void insert(Usuario u);
@@ -49,5 +51,8 @@ public interface UserDao {
 
 	/** Devuelve una lista de tags cuyo texto contenga la cadena parcial especificada. */
 	public List<TagUsuario> findMatchingTags(String parcial);
+
+    /** Cifra un password con los datos adicionales de ID y nombre de usuario. */
+    public String cifraPassword(String pass, String uname, int uid);
 
 }

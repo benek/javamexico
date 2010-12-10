@@ -32,10 +32,14 @@ public class Index extends Pagina {
 
     public List<Oferta> getOfertas() {
         if (stag == null) {
-            return bdao.getOfertasRecientes(new Date());
+            return bdao.getOfertasRecientes(20);
         } else {
             return bdao.getOfertasConTag(stag);
         }
+    }
+
+    public List<Oferta> getOfertasExpirar() {
+        return bdao.getOfertasPorExpirar(20);
     }
 
     public List<Tag> getPopTags() {

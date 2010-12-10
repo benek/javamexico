@@ -8,11 +8,20 @@
     <p>Ofertas con el tag ${stag}:</p>
     <ul><t:loop source="ofertas" t:value="oferta" t:element="li">
         <t:pagelink page="bolsa/ver" t:context="${oferta.ofid}">${oferta.titulo}</t:pagelink>
-        - por ${oferta.empresa.nombre} (${oferta.fechaAlta}, expira ${oferta.fechaExpira})
+        (${oferta.votos} votos) - por ${oferta.empresa.nombre} (${oferta.fechaAlta}, expira ${oferta.fechaExpira})
     </t:loop></ul>
 <p:else>
+    <p>Ofertas más recientes:</p>
+    <ul><t:loop source="ofertas" t:value="oferta" t:element="li">
+        <t:pagelink page="bolsa/ver" t:context="${oferta.ofid}">${oferta.titulo}</t:pagelink>
+        (${oferta.votos} votos) - por ${oferta.empresa.nombre} (${oferta.fechaAlta})
+    </t:loop></ul>
+
     <p>Ofertas a punto de expirar:</p>
-    <p>Ofertas nuevas:</p>
+    <ul><t:loop source="ofertasExpirar" t:value="oferta" t:element="li">
+        <t:pagelink page="bolsa/ver" t:context="${oferta.ofid}">${oferta.titulo}</t:pagelink>
+        (${oferta.votos} votos) - por ${oferta.empresa.nombre} (expira ${oferta.fechaExpira})
+    </t:loop></ul>
 </p:else></t:if>
 
     <p:sidebar>

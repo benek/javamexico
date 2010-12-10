@@ -97,7 +97,7 @@
   <component name="DependencyValidationManager">
     <option name="SKIP_IMPORT_STATEMENTS" value="false" />
   </component>
-  <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false">
+  <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false" defaultCharsetForPropertiesFiles="UTF-8">
     <file url="file://$PROJECT_DIR$/JavaMexico" charset="UTF-8" />
   </component>
   <component name="FacetAutodetectingManager">
@@ -129,6 +129,7 @@
           <option name="processLiterals" value="true" />
           <option name="processComments" value="true" />
         </inspection_tool>
+        <inspection_tool class="StringBufferReplaceableByStringBuilder" enabled="true" level="WARNING" enabled_by_default="true" />
       </profile>
     </profiles>
     <option name="PROJECT_PROFILE" value="Project Default" />
@@ -298,7 +299,7 @@
       <module fileurl="file://$PROJECT_DIR$/daos-hib3/javamexico-hibernate3.iml" filepath="$PROJECT_DIR$/daos-hib3/javamexico-hibernate3.iml" />
     </modules>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_6" assert-keyword="true" jdk-15="true" project-jdk-name="1.6" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_6" assert-keyword="true" jdk-15="true" project-jdk-name="Java 6" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
   <component name="SvnBranchConfigurationManager">

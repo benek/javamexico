@@ -15,10 +15,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="152d6bf5-fbd3-4d66-962b-98852155c619" name="Default" comment="" />
-    <ignored path="$USER_HOME_GRIFFON$/" />
-    <ignored path="javaMexico2.0.iws" />
     <ignored path="$USER_HOME_GRAILS$/" />
     <ignored path=".idea/workspace.xml" />
+    <ignored path="javaMexico2.0.iws" />
+    <ignored path="$USER_HOME_GRIFFON$/" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,10 +80,31 @@
   <component name="FileColors" enabled="true" enabledForTabs="true" />
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="BolsaDAO.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/daos-hib3/src/main/java/org/javamexico/dao/hib3/BolsaDAO.java">
+      <file leaf-file-name="daos.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/JavaMexico/src/main/webapp/WEB-INF/daos.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="84" column="45" selection-start="2774" selection-end="2774" vertical-scroll-proportion="0.0">
+            <state line="70" column="0" selection-start="3160" selection-end="3160" vertical-scroll-proportion="-57.136364">
+              <folding />
+            </state>
+          </provider>
+          <provider editor-type-id="com.intellij.spring.perspectives.SpringBeansStructureEditorProvider">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CambiaPassword.tml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/JavaMexico/src/main/webapp/CambiaPassword.tml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="17" column="63" selection-start="806" selection-end="806" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CambiaPassword.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/JavaMexico/src/main/java/org/javamexico/site/pages/CambiaPassword.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="24" column="14" selection-start="778" selection-end="778" vertical-scroll-proportion="0.78649235">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -91,37 +112,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Layout.tml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/JavaMexico/src/main/resources/org/javamexico/site/components/Layout.tml">
+      <file leaf-file-name="UserPasswordManager.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/JavaMexico/src/main/java/org/javamexico/site/services/UserPasswordManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Layout.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/JavaMexico/src/main/java/org/javamexico/site/components/Layout.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="45" column="65" selection-start="1298" selection-end="1298" vertical-scroll-proportion="0.68409586">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BolsaTrabajoDao.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/org/javamexico/dao/BolsaTrabajoDao.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="45" selection-start="696" selection-end="696" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Ver.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/JavaMexico/src/main/java/org/javamexico/site/pages/bolsa/Ver.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="75" column="0" selection-start="2115" selection-end="2115" vertical-scroll-proportion="0.0">
+            <state line="41" column="43" selection-start="1834" selection-end="1834" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -129,28 +123,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Ver.tml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/JavaMexico/src/main/webapp/bolsa/Ver.tml">
+      <file leaf-file-name="Base64.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/src/org/javamexico/util/Base64.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="30" column="4" selection-start="1177" selection-end="1177" vertical-scroll-proportion="0.0">
+            <state line="113" column="17" selection-start="3657" selection-end="3657" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Oferta.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/org/javamexico/entity/bolsa/Oferta.java">
+      <file leaf-file-name="UsuarioDAO.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/daos-hib3/src/main/java/org/javamexico/dao/hib3/UsuarioDAO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="149" column="0" selection-start="3448" selection-end="3448" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Foro.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/org/javamexico/entity/foro/Foro.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="128" column="0" selection-start="2885" selection-end="3129" vertical-scroll-proportion="0.0">
+            <state line="155" column="31" selection-start="4956" selection-end="4956" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -170,22 +155,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/core/src/org/javamexico/entity/Usuario.java" />
-        <option value="$PROJECT_DIR$/daos-hib3/src/test/java/org/javamexico/test/dao/TestBolsa.java" />
-        <option value="$PROJECT_DIR$/daos-hib3/pom.xml" />
-        <option value="$PROJECT_DIR$/daos-hib3/src/test/resources/org/javamexico/test/dao/spring.xml" />
-        <option value="$PROJECT_DIR$/core/src/org/javamexico/entity/bolsa/Empresa.java" />
-        <option value="$PROJECT_DIR$/daos-hib3/src/main/java/org/javamexico/dao/hib3/UsuarioDAO.java" />
-        <option value="$PROJECT_DIR$/core/src/org/javamexico/entity/bolsa/Tag.java" />
-        <option value="$PROJECT_DIR$/JavaMexico/src/main/webapp/bolsa/Index.tml" />
-        <option value="$PROJECT_DIR$/JavaMexico/src/main/java/org/javamexico/site/pages/bolsa/Index.java" />
-        <option value="$PROJECT_DIR$/core/src/org/javamexico/entity/bolsa/Oferta.java" />
         <option value="$PROJECT_DIR$/core/src/org/javamexico/dao/BolsaTrabajoDao.java" />
+        <option value="$PROJECT_DIR$/JavaMexico/src/main/java/org/javamexico/site/pages/foros/Index.java" />
+        <option value="$PROJECT_DIR$/JavaMexico/src/main/java/org/javamexico/site/pages/bolsa/Index.java" />
         <option value="$PROJECT_DIR$/daos-hib3/src/main/java/org/javamexico/dao/hib3/BolsaDAO.java" />
-        <option value="$PROJECT_DIR$/JavaMexico/src/main/java/org/javamexico/site/pages/bolsa/Ver.java" />
+        <option value="$PROJECT_DIR$/JavaMexico/src/main/webapp/bolsa/Index.tml" />
+        <option value="$PROJECT_DIR$/JavaMexico/src/main/webapp/OlvidaPassword.tml" />
+        <option value="$PROJECT_DIR$/core/src/org/javamexico/dao/UserDao.java" />
+        <option value="$PROJECT_DIR$/daos-hib3/src/main/java/org/javamexico/dao/hib3/UsuarioDAO.java" />
+        <option value="$PROJECT_DIR$/core/src/org/javamexico/entity/Usuario.java" />
+        <option value="$PROJECT_DIR$/core/src/org/javamexico/util/Base64.java" />
         <option value="$PROJECT_DIR$/JavaMexico/src/main/webapp/WEB-INF/daos.xml" />
-        <option value="$PROJECT_DIR$/JavaMexico/src/main/webapp/bolsa/Ver.tml" />
-        <option value="$PROJECT_DIR$/JavaMexico/src/main/java/org/javamexico/site/components/Layout.java" />
+        <option value="$PROJECT_DIR$/JavaMexico/src/main/java/org/javamexico/site/pages/OlvidaPassword.java" />
+        <option value="$PROJECT_DIR$/JavaMexico/src/main/java/org/javamexico/site/services/UserPasswordManager.java" />
+        <option value="$PROJECT_DIR$/JavaMexico/src/main/java/org/javamexico/site/services/UserPasswordManagerImpl.java" />
+        <option value="$PROJECT_DIR$/JavaMexico/src/main/webapp/CambiaPassword.tml" />
+        <option value="$PROJECT_DIR$/JavaMexico/src/main/java/org/javamexico/site/pages/CambiaPassword.java" />
       </list>
     </option>
   </component>
@@ -250,15 +235,24 @@
       <profile-state>
         <expanded-state>
           <State>
+            <id>Groovy</id>
+          </State>
+          <State>
             <id>Inspections</id>
           </State>
           <State>
-            <id>Spelling</id>
+            <id>Spring Model</id>
+          </State>
+          <State>
+            <id>TestNG</id>
+          </State>
+          <State>
+            <id>Threading issues</id>
           </State>
         </expanded-state>
         <selected-state>
           <State>
-            <id>Spelling</id>
+            <id>VolatileArrayField</id>
           </State>
         </selected-state>
       </profile-state>
@@ -292,7 +286,7 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -528,6 +522,10 @@
               <option name="myItemId" value="site" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="services" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -663,17 +661,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="daos-hib3" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="javaMexico2.0" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="daos-hib3" />
+              <option name="myItemId" value="JavaMexico" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -681,55 +669,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="javaMexico2.0" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="daos-hib3" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dao" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="javaMexico2.0" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="daos-hib3" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
+              <option name="myItemId" value="main" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -737,7 +677,31 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="dao" />
+              <option name="myItemId" value="site" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="javaMexico2.0" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="daos-hib3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="javaMexico2.0" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="daos-hib3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -810,6 +774,10 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="javamexico" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="util" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -911,29 +879,29 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Favorites" />
+      <pane id="Scope" />
       <pane id="TapestryProjectView" />
+      <pane id="Favorites" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="GoToFile.includeJavaFiles" value="false" />
-    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.last.edited" value="SDKs" />
     <property name="OverrideImplement.combined" value="true" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="MemberChooser.sorted" value="false" />
     <property name="recentsLimit" value="5" />
-    <property name="options.lastSelected" value="MavenSettings" />
+    <property name="options.lastSelected" value="File.Encoding" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
-    <property name="options.searchVisible" value="true" />
     <property name="dynamic.classpath" value="false" />
+    <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RunManager" selected="Tomcat Server.Tomcat 5">
     <configuration default="false" name="TestPreguntas" type="JUnit" factoryName="JUnit" temporary="true">
@@ -1005,6 +973,34 @@
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
+    <configuration default="false" name="TestBolsa" type="JUnit" factoryName="JUnit" temporary="true">
+      <extension name="coverage" enabled="false" merge="false">
+        <pattern>
+          <option name="PATTERN" value="org.javamexico.test.dao.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <extension name="snapshooter" />
+      <module name="javamexico-hibernate3" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="org.javamexico.test.dao" />
+      <option name="MAIN_CLASS_NAME" value="org.javamexico.test.dao.TestBolsa" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
     <configuration default="false" name="JavaMexico [install]" type="MavenRunConfiguration" factoryName="Maven" temporary="true">
       <MavenSettings>
         <option name="myGeneralSettings">
@@ -1051,41 +1047,18 @@
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
-    <configuration default="false" name="TestBolsa" type="JUnit" factoryName="JUnit" temporary="true">
-      <extension name="coverage" enabled="false" merge="false">
-        <pattern>
-          <option name="PATTERN" value="org.javamexico.test.dao.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <extension name="snapshooter" />
-      <module name="javamexico-hibernate3" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="org.javamexico.test.dao" />
-      <option name="MAIN_CLASS_NAME" value="org.javamexico.test.dao.TestBolsa" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="moduleWithDependencies" />
-      </option>
-      <envs />
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
-    <configuration default="true" type="PhpRunConfigurationType" factoryName="PHP">
+    <configuration default="true" type="GrailsRunConfigurationType" factoryName="Grails">
+      <module name="" />
+      <setting name="vmparams" value="" />
+      <setting name="cmdLine" value="run-app" />
+      <setting name="depsClasspath" value="true" />
+      <setting name="passParentEnv" value="true" />
+      <setting name="launchBrowser" value="true" />
       <method>
         <option name="AntTarget" enabled="false" />
         <option name="BuildArtifacts" enabled="false" />
-        <option name="FtpUpload" enabled="false" />
+        <option name="Make" enabled="true" />
         <option name="Maven.BeforeRunTask" enabled="false" />
-        <option name="ValidateXdebugSetup" enabled="true" />
       </method>
     </configuration>
     <configuration default="true" type="MavenRunConfiguration" factoryName="Maven">
@@ -1095,7 +1068,7 @@
             <option name="checksumPolicy" value="FAIL" />
             <option name="failureBehavior" value="FAST" />
             <option name="localRepository" value="" />
-            <option name="mavenHome" value="" />
+            <option name="mavenHome" value="/usr/local/apache-maven" />
             <option name="mavenSettingsFile" value="" />
             <option name="nonRecursive" value="false" />
             <option name="pluginUpdatePolicy" value="DO_NOT_UPDATE" />
@@ -1133,14 +1106,6 @@
         <option name="BuildArtifacts" enabled="false" />
         <option name="Make" enabled="false" />
         <option name="Maven.BeforeRunTask" enabled="false" />
-      </method>
-    </configuration>
-    <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
-      <method>
-        <option name="AntTarget" enabled="false" />
-        <option name="BuildArtifacts" enabled="false" />
-        <option name="Maven.BeforeRunTask" enabled="false" />
-        <option name="ValidateXdebugSetup" enabled="true" />
       </method>
     </configuration>
     <configuration default="true" type="Remote" factoryName="Remote">
@@ -1215,6 +1180,14 @@
         <option name="Maven.BeforeRunTask" enabled="false" />
       </method>
     </configuration>
+    <configuration default="true" type="AirRunConfigurationType" factoryName="AIR" adl_options="" air_descriptor_path="" air_program_params="" air_publisher_id="" air_root_dir_path="" air_run_mode="AppDescriptor" debugger_sdk="Module SDK" html_or_swf_file_path="" main_class_name="" module_name="" run_mode="HtmlOrSwfFile" url_to_launch="http://">
+      <method>
+        <option name="AntTarget" enabled="false" />
+        <option name="BuildArtifacts" enabled="false" />
+        <option name="Make" enabled="true" />
+        <option name="Maven.BeforeRunTask" enabled="false" />
+      </method>
+    </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <extension name="coverage" enabled="false" merge="false" />
       <extension name="snapshooter" />
@@ -1234,15 +1207,6 @@
         <option name="BuildArtifacts" enabled="false" />
         <option name="Make" enabled="true" />
         <option name="Maven.BeforeRunTask" enabled="false" />
-      </method>
-    </configuration>
-    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
-      <method>
-        <option name="AntTarget" enabled="false" />
-        <option name="BuildArtifacts" enabled="false" />
-        <option name="FtpUpload" enabled="false" />
-        <option name="Maven.BeforeRunTask" enabled="false" />
-        <option name="ValidateXdebugSetup" enabled="true" />
       </method>
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
@@ -1275,9 +1239,45 @@
       <deployment />
       <server-settings>
         <option name="DEPLOY_TOMCAT_MANAGER" value="false" />
-        <option name="BASE_DIRECTORY_NAME" value="" />
+        <option name="BASE_DIRECTORY_NAME" value="_javaMexico2_0a7ccf7c8" />
       </server-settings>
       <predefined_log_file id="TOMCAT_LOCALHOST_LOG_ID" enabled="true" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="64218" />
+        <option name="TRANSPORT" value="0" />
+        <option name="LOCAL" value="true" />
+      </RunnerSettings>
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
       <method>
         <option name="AntTarget" enabled="false" />
         <option name="BuildArtifacts" enabled="false" />
@@ -1285,11 +1285,79 @@
         <option name="Maven.BeforeRunTask" enabled="false" />
       </method>
     </configuration>
+    <configuration default="true" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Remote">
+      <option name="LOCAL" value="false" />
+      <server-settings>
+        <option name="DEPLOY_TOMCAT_MANAGER" value="false" />
+        <option name="BASE_DIRECTORY_NAME" value="_javaMexico2_0a7ccf7c8" />
+      </server-settings>
+      <predefined_log_file id="TOMCAT_LOCALHOST_LOG_ID" enabled="true" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="64219" />
+        <option name="TRANSPORT" value="0" />
+        <option name="LOCAL" value="false" />
+      </RunnerSettings>
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Debug" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method>
+        <option name="AntTarget" enabled="false" />
+        <option name="BuildArtifacts" enabled="false" />
+        <option name="Make" enabled="true" />
+        <option name="Maven.BeforeRunTask" enabled="false" />
+      </method>
+    </configuration>
+    <configuration default="false" name="Jetty" type="MavenRunConfiguration" factoryName="Maven">
+      <MavenSettings>
+        <option name="myGeneralSettings">
+          <MavenGeneralSettings>
+            <option name="checksumPolicy" value="FAIL" />
+            <option name="failureBehavior" value="FAST" />
+            <option name="localRepository" value="" />
+            <option name="mavenHome" value="/usr/local/apache-maven" />
+            <option name="mavenSettingsFile" value="" />
+            <option name="nonRecursive" value="false" />
+            <option name="pluginUpdatePolicy" value="DO_NOT_UPDATE" />
+            <option name="printErrorStackTraces" value="false" />
+            <option name="snapshotUpdatePolicy" value="ALWAYS_UPDATE" />
+            <option name="usePluginRegistry" value="false" />
+            <option name="workOffline" value="false" />
+          </MavenGeneralSettings>
+        </option>
+        <option name="myRunnerSettings">
+          <MavenRunnerSettings>
+            <option name="jreName" value="#JAVA_INTERNAL" />
+            <option name="mavenProperties">
+              <map />
+            </option>
+            <option name="runMavenInBackground" value="true" />
+            <option name="skipTests" value="false" />
+            <option name="vmOptions" value="" />
+          </MavenRunnerSettings>
+        </option>
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="goals">
+              <list>
+                <option value="jetty:run" />
+              </list>
+            </option>
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="workingDirPath" value="$PROJECT_DIR$/JavaMexico" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
     <configuration default="false" name="Tomcat 5" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 5">
       <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/JavaMexico" />
-      <option name="UPDATING_POLICY" value="restart-server" />
+      <option name="UPDATING_POLICY" value="redeploy-artifacts" />
       <deployment>
-        <artifact name="JavaMexico:war">
+        <artifact name="JavaMexico:war exploded">
           <settings>
             <option name="CONTEXT_PATH" value="/" />
           </settings>
@@ -1338,17 +1406,18 @@
       </ConfigurationWrapper>
       <method>
         <option name="BuildArtifacts" enabled="true">
-          <artifact name="JavaMexico:war" />
+          <artifact name="JavaMexico:war exploded" />
         </option>
       </method>
     </configuration>
-    <list size="6">
-      <item index="0" class="java.lang.String" itemvalue="Tomcat Server.Tomcat 5" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.TestPreguntas" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.TestUsuarios" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.org.javamexico.test.dao in javamexico-hibernate3" />
+    <list size="7">
+      <item index="0" class="java.lang.String" itemvalue="JUnit.TestPreguntas" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.TestUsuarios" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.org.javamexico.test.dao in javamexico-hibernate3" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.TestBolsa" />
       <item index="4" class="java.lang.String" itemvalue="Maven.JavaMexico [install]" />
-      <item index="5" class="java.lang.String" itemvalue="JUnit.TestBolsa" />
+      <item index="5" class="java.lang.String" itemvalue="Maven.Jetty" />
+      <item index="6" class="java.lang.String" itemvalue="Tomcat Server.Tomcat 5" />
     </list>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
       <Host>localhost</Host>
@@ -1394,25 +1463,25 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="10" y="22" width="1512" height="1011" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Tapestry" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.7362805" sideWeight="0.49743152" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Tapestry" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.7353604" sideWeight="0.49743152" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292683" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32882884" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27975377" sideWeight="0.24436937" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26675788" sideWeight="0.5495495" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3994528" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27975377" sideWeight="0.5495495" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.44256756" sideWeight="0.49657536" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27975377" sideWeight="0.2972973" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.44256756" sideWeight="0.49657536" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1489,74 +1558,88 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/daos-hib3/src/main/java/org/javamexico/dao/hib3/ForumDAO.java">
+    <entry file="file://$PROJECT_DIR$/core/src/org/javamexico/dao/BolsaTrabajoDao.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="291" column="0" selection-start="9037" selection-end="9037" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/JavaMexico/src/main/webapp/bolsa/Index.tml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="0" selection-start="708" selection-end="708" vertical-scroll-proportion="0.33178115">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/JavaMexico/src/main/webapp/foros/Index.tml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="5" selection-start="998" selection-end="998" vertical-scroll-proportion="0.55296856">
+        <state line="55" column="0" selection-start="2184" selection-end="2251" vertical-scroll-proportion="0.6688453">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/JavaMexico/src/main/java/org/javamexico/site/pages/bolsa/Index.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="46" column="0" selection-start="1347" selection-end="1347" vertical-scroll-proportion="0.80093133">
+        <state line="32" column="12" selection-start="959" selection-end="959" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/org/javamexico/entity/Usuario.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="126" column="1" selection-start="3065" selection-end="3065" vertical-scroll-proportion="0.3659118">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/org/javamexico/dao/UserDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="54" column="79" selection-start="2050" selection-end="2050" vertical-scroll-proportion="0.84147793">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/org/javamexico/util/Base64.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="113" column="17" selection-start="3657" selection-end="3657" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/daos-hib3/src/main/java/org/javamexico/dao/hib3/UsuarioDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="155" column="31" selection-start="4956" selection-end="4956" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JavaMexico/src/main/resources/org/javamexico/site/components/LoginPanel.tml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JavaMexico/src/main/java/org/javamexico/site/pages/Index.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="13" selection-start="122" selection-end="122" vertical-scroll-proportion="0.15852205">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JavaMexico/src/main/java/org/javamexico/site/services/AppModule.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="8" selection-start="872" selection-end="872" vertical-scroll-proportion="0.5626424">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JavaMexico/src/main/webapp/OlvidaPassword.tml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="0" selection-start="691" selection-end="691" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JavaMexico/src/main/java/org/javamexico/site/pages/OlvidaPassword.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="13" selection-start="737" selection-end="737" vertical-scroll-proportion="-0.25512528">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/JavaMexico/src/main/java/org/javamexico/site/pages/foros/Index.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="48" column="0" selection-start="1501" selection-end="1619" vertical-scroll-proportion="0.3538999">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/JavaMexico/src/main/webapp/foros/Ver.tml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="0" selection-start="0" selection-end="2982" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/org/javamexico/entity/foro/Foro.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="128" column="0" selection-start="2885" selection-end="3129" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/org/javamexico/entity/bolsa/Oferta.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="149" column="0" selection-start="3448" selection-end="3448" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/org/javamexico/dao/BolsaTrabajoDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="45" selection-start="696" selection-end="696" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/JavaMexico/src/main/webapp/WEB-INF/daos.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="48" column="74" selection-start="2347" selection-end="2347" vertical-scroll-proportion="-10.545455">
+        <state line="70" column="0" selection-start="3160" selection-end="3160" vertical-scroll-proportion="-57.136364">
           <folding />
         </state>
       </provider>
@@ -1564,49 +1647,35 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/JavaMexico/src/main/java/org/javamexico/site/pages/foros/Ver.java">
+    <entry file="file://$PROJECT_DIR$/JavaMexico/src/main/java/org/javamexico/site/services/UserPasswordManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="33" selection-start="1509" selection-end="1509" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/JavaMexico/src/main/webapp/bolsa/Ver.tml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="4" selection-start="1177" selection-end="1177" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/JavaMexico/src/main/java/org/javamexico/site/pages/bolsa/Ver.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="75" column="0" selection-start="2115" selection-end="2115" vertical-scroll-proportion="0.0">
+        <state line="41" column="43" selection-start="1834" selection-end="1834" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/daos-hib3/src/main/java/org/javamexico/dao/hib3/BolsaDAO.java">
+    <entry file="file://$PROJECT_DIR$/JavaMexico/src/main/java/org/javamexico/site/services/UserPasswordManagerImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="84" column="45" selection-start="2774" selection-end="2774" vertical-scroll-proportion="0.0">
+        <state line="89" column="21" selection-start="3492" selection-end="3505" vertical-scroll-proportion="0.61047834">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JavaMexico/src/main/webapp/CambiaPassword.tml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="63" selection-start="806" selection-end="806" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JavaMexico/src/main/java/org/javamexico/site/pages/CambiaPassword.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="14" selection-start="778" selection-end="778" vertical-scroll-proportion="0.78649235">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/JavaMexico/src/main/resources/org/javamexico/site/components/Layout.tml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/JavaMexico/src/main/java/org/javamexico/site/components/Layout.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="45" column="65" selection-start="1298" selection-end="1298" vertical-scroll-proportion="0.68409586">
-          <folding />
         </state>
       </provider>
     </entry>

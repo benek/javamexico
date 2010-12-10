@@ -67,4 +67,7 @@
 	<constructor-arg ref="dataSource" />
 </bean>
 
+<bean id="passwordManager" class="org.javamexico.site.services.UserPasswordManagerImpl">
+</bean>
+
 </beans>

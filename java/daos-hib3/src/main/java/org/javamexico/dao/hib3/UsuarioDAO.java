@@ -16,6 +16,7 @@ package org.javamexico.dao.hib3;
 
 import java.security.GeneralSecurityException;
 import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Date;
 import java.util.List;
 
@@ -69,20 +70,9 @@ public class UsuarioDAO implements UserDao {
 		if (u != null) {
 			//Validar el password
 			if (u.getPassword() != null && u.getPassword().length() > 0) {
-				try {
-					//TODO esto se puede optimizar pero sin usar mucha memoria, tal vez un pool de MD's
-					MessageDigest md = MessageDigest.getInstance("SHA-1");
-					md.update(String.format("%d:%s/%s", u.getUid(), u.getUsername(), password).getBytes());
-					byte[] sha = md.digest();
-					//Codificar a base 64
-					password = Base64.base64Encode(sha, 0, sha.length);
-					if (!password.equals(u.getPassword())) {
-						u = null;
-					}
-				} catch (GeneralSecurityException ex) {
-					//No se pudo
-					log.error(String.format("Cifrando password usuario %s", username), ex);
-					u = null;
+                password = cifraPassword(password, u.getUsername(), u.getUid());
+                if (!password.equals(u.getPassword())) {
+                    u = null;
 				}
 			}
 			if (u != null) {
@@ -100,38 +90,15 @@ public class UsuarioDAO implements UserDao {
 		}
 		sess.save(u);
 		sess.flush();
-		try {
-			//TODO esto se puede optimizar pero sin usar mucha memoria, tal vez un pool de MD's
-			MessageDigest md = MessageDigest.getInstance("SHA-1");
-			md.update(String.format("%d:%s/%s", u.getUid(), u.getUsername(), u.getPassword()).getBytes());
-			byte[] sha = md.digest();
-			//Codificar a base 64
-			u.setPassword(Base64.base64Encode(sha, 0, sha.length));
-			//Actualizar el usuario
-			sess.update(u);
-		} catch (GeneralSecurityException ex) {
-			//No se pudo
-			log.error(String.format("Cifrando password de nuevo usuario %s", u.getUsername()), ex);
-			throw new DataIntegrityViolationException("No se puede cifrar el password", ex);
-		}
+		u.setPassword(cifraPassword(u.getPassword(), u.getUsername(), u.getUid()));
+		sess.update(u);
 	}
 
 	public void update(Usuario u) {
 		Session sess = sfact.getCurrentSession();
 		Usuario u2 = (Usuario)sess.get(Usuario.class, u.getUid());
 		if (u2.getPassword() == null || !u2.getPassword().equals(u.getPassword())) {
-			try {
-				//TODO esto se puede optimizar pero sin usar mucha memoria, tal vez un pool de MD's
-				MessageDigest md = MessageDigest.getInstance("SHA-1");
-				md.update(String.format("%d:%s/%s", u.getUid(), u.getUsername(), u.getPassword()).getBytes());
-				byte[] sha = md.digest();
-				//Codificar a base 64
-				u.setPassword(Base64.base64Encode(sha, 0, sha.length));
-			} catch (GeneralSecurityException ex) {
-				//No se pudo
-				log.error("Cifrando password de nuevo usuario {}", u.getUsername(), ex);
-				throw new DataIntegrityViolationException("No se puede modificar el password del usuario", ex);
-			}
+            u.setPassword(cifraPassword(u.getPassword(), u.getUsername(), u.getUid()));
 		}
         sess.evict(u2);
 		sess.update(u);
@@ -173,5 +140,28 @@ public class UsuarioDAO implements UserDao {
 				Restrictions.ilike("tag", String.format("*%s*", parcial))).list();
 		return tags;
 	}
+
+    public Usuario findByEmail(String email) {
+        Session sess = sfact.getCurrentSession();
+        List<Usuario> us = sess.createCriteria(Usuario.class).add(Restrictions.eq("email", email)).setMaxResults(1).list();
+        if (us.size() > 0) {
+            return us.get(0);
+        }
+        return null;
+    }
+
+    public String cifraPassword(String pass, String uname, int uid) {
+        try {
+            //TODO esto se puede optimizar pero sin usar mucha memoria, tal vez un pool de MD's
+            MessageDigest md = MessageDigest.getInstance("SHA-1");
+            md.update(String.format("%d:%s/%s", uid, uname, pass).getBytes());
+            byte[] sha = md.digest();
+            //Codificar a base 64
+            return Base64.base64Encode(sha, 0, sha.length);
+        } catch (NoSuchAlgorithmException ex) {
+            log.error("No encuentro algoritmo SHA-1 para cifrar pass!");
+        }
+        return "-NOP-";
+    }
 
 }

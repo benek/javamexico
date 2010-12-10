@@ -42,6 +42,7 @@ public class Usuario implements Comparable<Usuario> {
 	private String nombre;
     private String email;
 	private String passwd;
+    private String token;
 	private Date alta;
 	private int status;
 	private int rep;
@@ -119,6 +120,13 @@ public class Usuario implements Comparable<Usuario> {
 		verif = value;
 	}
 
+    public void setToken(String value) {
+        token = value;
+    }
+    @Column(name="pass_token", length=80, nullable=true)
+    public String getToken() {
+        return token;
+    }
 	public int compareTo(Usuario o) {
 		if (o == null) {
 			return 1;
