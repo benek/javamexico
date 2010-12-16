@@ -42,6 +42,13 @@
         		<type>jar</type>
         		<scope>compile</scope>
         	</dependency>
+        	<dependency>
+        		<groupId>junit</groupId>
+        		<artifactId>junit</artifactId>
+        		<version>4.8.2</version>
+        		<type>jar</type>
+        		<scope>test</scope>
+        	</dependency>
         </dependencies>
         <description>Clases principales (entidades, daos) para JavaMexico.org</description>
         <url>http://code.google.com/p/javamexico/</url>
@@ -61,7 +68,6 @@
         </organization>
         <build>
         <finalName>javamexico-core</finalName>
-        <sourceDirectory>${project.basedir}/src</sourceDirectory>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -74,6 +80,11 @@
                 </configuration>
             </plugin>
 
+            <plugin>
+            	<groupId>org.apache.maven.plugins</groupId>
+            	<artifactId>maven-surefire-plugin</artifactId>
+            	<version>2.6</version>
+            </plugin>
         </plugins>
     </build>
 

@@ -71,7 +71,7 @@ public class Base64 {
 			buf.append(B64_CHARS[indice]);
 
 			//Leer el segundo byte y pasarlo a positivo
-			if (i + 1 < input.length) {
+			if (i + 1 < end) {
 				dos = input[i + 1];
 				if (dos < 0) {
 					dos |= 0x80;
@@ -85,7 +85,7 @@ public class Base64 {
 			}
 
 			//Leer el tercer byte y pasarlo a positivo
-			if (i + 2 < input.length) {
+			if (i + 2 < end) {
 				tres = input[i + 2];
 				if (tres < 0) {
 					tres |= 0x80;
@@ -96,16 +96,15 @@ public class Base64 {
 				//los ultimos 6 del tercero
 				indice = tres & 0x3f;
 				buf.append(B64_CHARS[indice]);
-			} else if (i+2 == input.length) {
+			} else if (i+2 == end) {
 				indice = (dos & 0x0f) << 2;
 				buf.append(B64_CHARS[indice]);
-				//buf.append("=");
-			}
-			/*if (i + 1 >= input.length) {
+				buf.append("=");
+			} else if (i + 1 >= end) {
 				buf.append("==");
-			} else if (i >= input.length) {
+			} else if (i >= end) {
 			    buf.append("=");
-			}*/
+			}
 		}
 		return buf.toString();
 	}
