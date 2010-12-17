@@ -7,13 +7,6 @@
     <name>JavaMexico Core Classes</name>
         <dependencies>
         	<dependency>
-        		<groupId>javax.annotation</groupId>
-        		<artifactId>jsr250-api</artifactId>
-        		<version>1.0</version>
-        		<type>jar</type>
-        		<scope>compile</scope>
-        	</dependency>
-        	<dependency>
         		<groupId>javax.persistence</groupId>
         		<artifactId>persistence-api</artifactId>
         		<version>1.0</version>
@@ -100,4 +93,7 @@
 
     </pluginRepositories>
 
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
 </project>
