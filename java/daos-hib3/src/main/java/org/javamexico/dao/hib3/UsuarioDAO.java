@@ -14,7 +14,6 @@ If not, see <http://www.gnu.org/licenses/>.
 */
 package org.javamexico.dao.hib3;
 
-import java.security.GeneralSecurityException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Date;
@@ -30,7 +29,6 @@ import org.javamexico.util.Base64;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Required;
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.transaction.annotation.Transactional;
 
 /** Implementacion del DAO para usuarios, usando Hibernate 3 y soporte de Spring (indirecto).
@@ -143,6 +141,7 @@ public class UsuarioDAO implements UserDao {
 
     public Usuario findByEmail(String email) {
         Session sess = sfact.getCurrentSession();
+        @SuppressWarnings("unchecked")
         List<Usuario> us = sess.createCriteria(Usuario.class).add(Restrictions.eq("email", email)).setMaxResults(1).list();
         if (us.size() > 0) {
             return us.get(0);

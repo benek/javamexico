@@ -21,6 +21,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
+import org.hibernate.LockMode;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.MatchMode;
@@ -174,17 +175,34 @@ public class QuestionDAO implements PreguntaDao {
 		}
 		Session sess = sfact.getCurrentSession();
 		VotoPregunta v = findVoto(user, pregunta);
+		int updateRep = 0;
 		if (v == null) {
+			//Insertamos un nuevo voto
 			v = new VotoPregunta();
 			v.setFecha(new Date());
 			v.setPregunta(pregunta);
 			v.setUp(up);
 			v.setUser(user);
 			sess.save(v);
+			updateRep = up ? 1 : -1;
 		} else if (v.isUp() != up) {
+			//Modificamos el voto existente
 			v.setUp(up);
 			v.setFecha(new Date());
 			sess.update(v);
+			//Al cambiar voto, debe afectarse por 2
+			updateRep = up ? 2 : -2;
+		}
+		if (updateRep != 0) {
+			//Actualizamos la reputacion del autor de la pregunta
+			sess.refresh(pregunta);
+			//Esto no es intuitivo pero si no lo hago asi, hib3 arroja excepcion marciana.
+			user = (Usuario)sess.merge(pregunta.getAutor());
+			sess.lock(user, LockMode.UPGRADE);
+			sess.refresh(user);
+			user.setReputacion(user.getReputacion() + updateRep);
+			sess.update(user);
+			sess.flush();
 		}
 		return v;
 	}
@@ -195,6 +213,7 @@ public class QuestionDAO implements PreguntaDao {
 		}
 		Session sess = sfact.getCurrentSession();
 		VotoRespuesta v = findVoto(user, resp);
+		int updateRep = 0;
 		if (v == null) {
 			v = new VotoRespuesta();
 			v.setFecha(new Date());
@@ -202,10 +221,21 @@ public class QuestionDAO implements PreguntaDao {
 			v.setUp(up);
 			v.setUser(user);
 			sess.save(v);
+			updateRep = up ? 1 : -1;
 		} else if (v.isUp() != up) {
 			v.setUp(up);
 			v.setFecha(new Date());
 			sess.update(v);
+			updateRep = up ? 2 : -2;
+		}
+		if (updateRep != 0) {
+			sess.refresh(resp);
+			user = (Usuario)sess.merge(resp.getAutor());
+			sess.lock(user, LockMode.UPGRADE);
+			sess.refresh(user);
+			user.setReputacion(user.getReputacion() + updateRep);
+			sess.update(user);
+			sess.flush();
 		}
 		return v;
 	}

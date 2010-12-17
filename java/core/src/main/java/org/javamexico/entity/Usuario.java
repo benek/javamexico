@@ -106,6 +106,7 @@ public class Usuario implements Comparable<Usuario> {
 		status = value;
 	}
 
+	/** Devuelve la reputacion del usuario. */
 	public int getReputacion() {
 		return rep;
 	}

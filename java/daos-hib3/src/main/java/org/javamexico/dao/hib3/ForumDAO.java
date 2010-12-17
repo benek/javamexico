@@ -21,6 +21,7 @@ import java.util.Set;
 import java.util.TreeSet;
 
 import org.hibernate.Criteria;
+import org.hibernate.LockMode;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.MatchMode;
@@ -234,6 +235,7 @@ public class ForumDAO implements ForoDao {
 		Session sess = sfact.getCurrentSession();
 		//Buscamos el voto a ver si ya se hizo
 		VotoForo voto = findVoto(user, foro);
+		int uprep = 0;
 		if (voto == null) {
 			//Si no existe lo creamos
 			voto = new VotoForo();
@@ -242,11 +244,23 @@ public class ForumDAO implements ForoDao {
 			voto.setUp(up);
 			voto.setUser(user);
 			sess.save(voto);
+			uprep = up ? 1 : -1;
 		} else if (voto.isUp() != up) {
 			//Si ya existe pero quieren cambio, se actualiza
 			voto.setFecha(new Date());
 			voto.setUp(up);
 			sess.update(voto);
+			uprep = up ? 2 : -2;
+		}
+		if (uprep != 0) {
+			sess.refresh(foro);
+			//Esto no es nada intuitivo pero si no lo hago asi, se arroja una excepcion marciana de Hib
+			user = (Usuario)sess.merge(foro.getAutor());
+			sess.lock(user, LockMode.UPGRADE);
+			sess.refresh(user);
+			user.setReputacion(user.getReputacion() + uprep);
+			sess.update(user);
+			sess.flush();
 		}
 		return voto;
 	}
@@ -258,6 +272,7 @@ public class ForumDAO implements ForoDao {
 		}
 		Session sess = sfact.getCurrentSession();
 		VotoComentForo voto = findVoto(user, coment);
+		int uprep = 0;
 		if (voto == null) {
 			voto = new VotoComentForo();
 			voto.setFecha(new Date());
@@ -265,10 +280,21 @@ public class ForumDAO implements ForoDao {
 			voto.setUp(up);
 			voto.setUser(user);
 			sess.save(voto);
+			uprep = up ? 1 : -1;
 		} else if (voto.isUp() != up) {
 			voto.setUp(up);
 			voto.setFecha(new Date());
 			sess.update(voto);
+			uprep = up ? 2 : -2;
+		}
+		if (uprep != 0) {
+			sess.refresh(coment);
+			user = (Usuario)sess.merge(coment.getAutor());
+			sess.lock(user, LockMode.UPGRADE);
+			sess.refresh(user);
+			user.setReputacion(user.getReputacion() + uprep);
+			sess.update(user);
+			sess.flush();
 		}
 		return voto;
 	}
