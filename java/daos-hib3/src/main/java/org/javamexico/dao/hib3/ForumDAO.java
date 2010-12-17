@@ -49,16 +49,26 @@ public class ForumDAO implements ForoDao {
 
 	protected final Logger log = LoggerFactory.getLogger(getClass());
 	private SessionFactory sfact;
-	private int minRepVotaF;
-	private int minRepVotaC;
+	private int minRepVotaFd = 20;
+	private int minRepVotaCd = 10;
+	private int minRepVotaFu = 5;
+	private int minRepVotaCu = 3;
 
 	/** Establece la reputacion minima que debe tener un usuario para dar un voto negativo a un foro. */
-	public void setMinRepVotoForo(int value) {
-		minRepVotaF = value;
+	public void setMinRepVotoForoDown(int value) {
+		minRepVotaFd = value;
 	}
 	/** Establece la reputacion minima que debe tener un usuario para dar un voto negativo a un comentario de foro. */
-	public void setMinRepVotoComent(int value) {
-		minRepVotaC = value;
+	public void setMinRepVotoComentDown(int value) {
+		minRepVotaCd = value;
+	}
+	/** Establece la reputacion minima que debe tener un usuario para dar un voto positivo a un foro. */
+	public void setMinRepVotoForoUp(int value) {
+		minRepVotaFu = value;
+	}
+	/** Establece la reputacion minima que debe tener un usuario para dar un voto positivo a un comentario de foro. */
+	public void setMinRepVotoComentUp(int value) {
+		minRepVotaCu = value;
 	}
 
 	@Required
@@ -229,8 +239,8 @@ public class ForumDAO implements ForoDao {
 
 	public VotoForo vota(Usuario user, Foro foro, boolean up)
 			throws PrivilegioInsuficienteException {
-		if (!up && user.getReputacion() < minRepVotaF) {
-			throw new PrivilegioInsuficienteException();
+		if ((up && user.getReputacion() < minRepVotaFu) || (!up && user.getReputacion() < minRepVotaFd)) {
+			throw new PrivilegioInsuficienteException("El usuario no tiene privilegio suficiente para votar por un foro");
 		}
 		Session sess = sfact.getCurrentSession();
 		//Buscamos el voto a ver si ya se hizo
@@ -267,8 +277,8 @@ public class ForumDAO implements ForoDao {
 
 	public VotoComentForo vota(Usuario user, ComentForo coment, boolean up)
 			throws PrivilegioInsuficienteException {
-		if (!up && user.getReputacion() < minRepVotaC) {
-			throw new PrivilegioInsuficienteException();
+		if ((up && user.getReputacion() < minRepVotaCu) || (!up && user.getReputacion() < minRepVotaCd)) {
+			throw new PrivilegioInsuficienteException("El usuario no tiene privilegio suficiente para votar por un comentario");
 		}
 		Session sess = sfact.getCurrentSession();
 		VotoComentForo voto = findVoto(user, coment);

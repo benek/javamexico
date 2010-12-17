@@ -50,16 +50,26 @@ public class QuestionDAO implements PreguntaDao {
 
 	protected final Logger log = LoggerFactory.getLogger(getClass());
 	private SessionFactory sfact;
-	private int minRepVotaP = 10;
-	private int minRepVotaR = 20;
+	private int minRepVotaPu = 10;
+	private int minRepVotaRu = 20;
+	private int minRepVotaPd = 5;
+	private int minRepVotaRd = 10;
 
 	/** Indica la reputacion minima requerida para dar votos negativos a una pregunta. */
-	public void setMinRepVotoPregunta(int value) {
-		minRepVotaP = value;
+	public void setMinRepVotoPreguntaDown(int value) {
+		minRepVotaPd = value;
 	}
 	/** Indica la reputacion minima requerida para dar votos negativos a una respuesta. */
-	public void setMinRepVotoRespuesta(int value) {
-		minRepVotaR = value;
+	public void setMinRepVotoRespuestaDown(int value) {
+		minRepVotaRd = value;
+	}
+	/** Indica la reputacion minima requerida para dar votos positivos a una pregunta. */
+	public void setMinRepVotoPreguntaUp(int value) {
+		minRepVotaPu = value;
+	}
+	/** Indica la reputacion minima requerida para dar votos positivos a una respuesta. */
+	public void setMinRepVotoRespuestaUp(int value) {
+		minRepVotaRu = value;
 	}
 
 	@Required
@@ -170,8 +180,8 @@ public class QuestionDAO implements PreguntaDao {
 	}
 
 	public VotoPregunta vota(Usuario user, Pregunta pregunta, boolean up) throws PrivilegioInsuficienteException {
-		if (!up && user.getReputacion() < minRepVotaP) {
-			throw new PrivilegioInsuficienteException();
+		if ((up && user.getReputacion() < minRepVotaPu) || (!up && user.getReputacion() < minRepVotaPd)) {
+			throw new PrivilegioInsuficienteException("El usuario no tiene privilegio suficiente para votar por una pregunta");
 		}
 		Session sess = sfact.getCurrentSession();
 		VotoPregunta v = findVoto(user, pregunta);
@@ -208,8 +218,8 @@ public class QuestionDAO implements PreguntaDao {
 	}
 
 	public VotoRespuesta vota(Usuario user, Respuesta resp, boolean up) throws PrivilegioInsuficienteException {
-		if (!up && user.getReputacion() < minRepVotaR) {
-			throw new PrivilegioInsuficienteException();
+		if ((up && user.getReputacion() < minRepVotaRu) || (!up && user.getReputacion() < minRepVotaRd)) {
+			throw new PrivilegioInsuficienteException("El usuario no tiene privilegio suficiente para votar por una respuesta");
 		}
 		Session sess = sfact.getCurrentSession();
 		VotoRespuesta v = findVoto(user, resp);
