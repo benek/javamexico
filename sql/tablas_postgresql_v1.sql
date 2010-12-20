@@ -234,12 +234,13 @@ CREATE TABLE voto_respuesta(
 
 --Entrada al blog de un usuario
 CREATE TABLE blog_post(
-	bid SERIAL PRIMARY KEY,
-	uid INTEGER NOT NULL REFERENCES usuario(uid) ON DELETE CASCADE,
-	fecha_alta TIMESTAMP NOT NULL,
-	comments   BOOLEAN NOT NULL DEFAULT true,
-	titulo     VARCHAR(400) NOT NULL,
-	texto      VARCHAR(4000) NOT NULL --o clob en otra tabla
+  bid SERIAL PRIMARY KEY,
+  uid INTEGER NOT NULL REFERENCES usuario(uid) ON DELETE CASCADE,
+  status     INTEGER NOT NULL DEFAULT 0,
+  fecha_alta TIMESTAMP NOT NULL,
+  comments   BOOLEAN NOT NULL DEFAULT true,
+  titulo     VARCHAR(400) NOT NULL,
+  texto      VARCHAR(4000) NOT NULL --o clob en otra tabla
 );
 
 --Comentarios de los usuarios en un blog
