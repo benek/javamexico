@@ -1,0 +1,12 @@
+<html t:type="layout" t:title="JavaMexico :: Blogs"
+      t:sidebarTitle="nada..."
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd"
+      xmlns:p="tapestry:parameter">
+
+<p>Pagina para dar de alta un artículo en el blog del usuario.</p>
+
+    <p:sidebar>
+    pendiente.
+    </p:sidebar>
+
+</html>

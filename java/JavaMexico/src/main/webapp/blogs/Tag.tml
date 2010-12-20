@@ -1,0 +1,32 @@
+<html t:type="layout" t:title="JavaMexico :: Blogs"
+      t:sidebarTitle="Blogs"
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd"
+      xmlns:p="tapestry:parameter">
+        <!-- Most of the page content, including <head>, <body>, etc. tags, comes from Layout.tml -->
+
+<t:if test="${uno}">
+    <p>Blogs con el tag ${elTag.tag}:</p>
+    <ul><t:loop source="blogs" t:value="blog" t:element="li">
+        <t:pagelink page="blogs/ver" t:context="${blog.bid}">${blog.titulo}</t:pagelink>
+        (${blog.votos} votos) - por <t:pagelink page="blogs/index" t:context="${blog.autor.uid}">${blog.autor.nombre}</t:pagelink> (${blog.fecha})
+    </t:loop></ul>
+<p:else>
+    <p>Blogs con tags: <t:loop source="tags" t:value="tag">${tag.tag} </t:loop></p>
+    <ul><t:loop source="blogs" t:value="blog" t:element="li">
+        <t:pagelink page="blogs/ver" t:context="${blog.bid}">${blog.titulo}</t:pagelink>
+        (${blog.votos} votos) - por <t:pagelink page="blogs/index" t:context="${blog.autor.uid}">${blog.autor.nombre}</t:pagelink> (${blog.fecha})
+    </t:loop></ul>
+</p:else></t:if>
+
+    <p:sidebar>
+    	<t:if test="userExists">
+    		<t:pagelink t:page="blogs/index" t:context="${user.username}">Mi blog</t:pagelink>
+    		<br/>
+    		<t:pagelink t:page="blogs/add">Nueva entrada</t:pagelink>
+    	</t:if>
+        <ol><t:loop t:source="popTags" t:value="tag" t:element="div">
+            <t:pagelink t:context="${tag.tag}" t:page="blogs/tag" class="qtag">${tag.tag}</t:pagelink> (${tag.count})
+        </t:loop></ol>
+    </p:sidebar>
+
+</html>

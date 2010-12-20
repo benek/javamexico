@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html t:type="layout" t:title="JavaMexico :: Blogs"
+      t:sidebarTitle="Blogs similares"
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd"
+      xmlns:p="tapestry:parameter">
+
+<h2>${blog.titulo}</h2>
+<cite>Por ${blog.autor.nombre} el ${blog.fecha}</cite>
+
+<div>${blog.votos} votos
+	<t:if test="userExists">
+		<t:actionlink t:id="voteBlogUp">Voto UP</t:actionlink>
+		| <t:actionlink t:id="voteBlogDown">Voto DOWN</t:actionlink>
+	</t:if>
+</div>
+<p>${blog.texto}</p>
+<div>Tags: <t:loop t:id="ftags" t:source="blog.tags" t:value="tag">
+	<t:pagelink t:context="${tag.tag}" t:page="blogs/tag" class="qtag">${tag.tag}</t:pagelink>&nbsp;
+</t:loop></div>
+
+<hr/>
+<t:loop t:id="fcoms" t:source="coments" t:value="coment"><div class="qtag">
+<cite>${coment.autor.nombre} (${coment.fecha})</cite>
+<br/>${coment.comentario}
+<br/>
+${coment.votos} votos <t:if test="userExists">
+	<t:actionlink t:id="voteComentUp">Voto UP</t:actionlink>
+	| <t:actionlink t:id="voteComentDown">Voto DOWN</t:actionlink>
+</t:if>
+
+<t:ligausuario text="Responder a este comentario">
+	<t:form t:id="responder">
+	<t:textarea t:value="commtext" cols="40" rows="10" t:id="resptext" />
+	<br/><t:submit value="Responder" />
+</t:form></t:ligausuario>
+<t:if test="coment.respuestas">
+<br/>
+<t:zone t:id="rzone" t:visible="true">
+	<t:actionlink t:zone="${rzoneClientId}" t:id="showResps">Ver las respuestas a este comentario</t:actionlink>
+</t:zone>
+</t:if>
+</div><hr/></t:loop>
+
+<!-- esto se presenta bajo alguno de los comentarios de primer nivel -->
+<t:zone t:id="subcomentZone" t:visible="false">
+	<t:loop t:id="cresps" t:source="coment?.respuestas" t:value="comresp" t:element="ul"><li>
+		<cite>${comresp.autor.nombre} (${comresp.fecha})</cite>
+		<br/>${comresp.comentario}
+		<br/>
+		${comresp.votos} votos <t:if test="userExists">
+			<t:actionlink t:id="voteComrespUp" t:context="comresp.cid">Voto UP</t:actionlink>
+			| <t:actionlink t:id="voteComrespDown" t:context="comresp.cid">Voto DOWN</t:actionlink>
+		</t:if>
+	</li></t:loop>
+</t:zone>
+
+<t:ligausuario text="Agregar una respuesta">
+	<t:form t:id="comentar">
+	<t:textarea t:value="commtext" cols="60" rows="10" t:id="commtext" />
+	<br/><t:submit value="Comentar" />
+</t:form></t:ligausuario>
+
+<p:sidebar>
+	<div>Blogs similares</div>
+	<t:loop t:id="fsims" t:source="blogsSimilares" t:value="otrob" t:element="div">
+    	<t:if test="blogDistinto"><t:pagelink t:page="blogs/ver" t:context="${otrob.bid}">${otrob.titulo}</t:pagelink></t:if>
+	</t:loop>
+    <t:if test="userExists">
+	<div>Mi blog:</div><t:loop t:id="fmios" t:source="miBlog" t:value="otrob" t:element="div">
+    	<t:if test="blogDistinto"><t:pagelink t:page="blogs/ver" t:context="${otrob.bid}">${otrob.titulo}</t:pagelink></t:if>
+	</t:loop></t:if>
+</p:sidebar>
+
+</html>
