@@ -53,7 +53,17 @@ public class ForumDAO implements ForoDao {
 	private int minRepVotaCd = 10;
 	private int minRepVotaFu = 5;
 	private int minRepVotaCu = 3;
+	private int minRepAddForo = 20;
+	private int minRepAddComent = 5;
 
+	/** Establece la reputacion minima que debe tener un usuario para agregar un foro a un tema. */
+	public void setMinRepAddForo(int value) {
+		minRepAddForo = value;
+	}
+	/** Establece la reputacion minima que debe tener un usuario para comentar en un foro. */
+	public void setMinRepComentar(int value) {
+		minRepAddComent = value;
+	}
 	/** Establece la reputacion minima que debe tener un usuario para dar un voto negativo a un foro. */
 	public void setMinRepVotoForoDown(int value) {
 		minRepVotaFd = value;
@@ -80,6 +90,9 @@ public class ForumDAO implements ForoDao {
 	}
 
 	public ComentForo addComment(String coment, ComentForo parent, Usuario autor) {
+		if (autor.getReputacion() < minRepAddComent) {
+			throw new PrivilegioInsuficienteException("El usuario no tiene reputacion suficiente para agregar comentarios");
+		}
 		Session sess = sfact.getCurrentSession();
 		ComentForo cf = new ComentForo();
 		cf.setForo(parent.getForo());
@@ -95,6 +108,9 @@ public class ForumDAO implements ForoDao {
 	}
 
 	public ComentForo addComment(String coment, Foro foro, Usuario autor) {
+		if (autor.getReputacion() < minRepAddComent) {
+			throw new PrivilegioInsuficienteException("El usuario no tiene reputacion suficiente para agregar comentarios");
+		}
 		Session sess = sfact.getCurrentSession();
 		ComentForo cf = new ComentForo();
 		cf.setForo(foro);
@@ -219,6 +235,9 @@ public class ForumDAO implements ForoDao {
 	}
 
 	public void insert(Foro foro) {
+		if (foro.getAutor().getReputacion() < minRepAddForo) {
+			throw new PrivilegioInsuficienteException("El usuario no tiene reputacion suficiente para agregar foros");
+		}
 		Session sess = sfact.getCurrentSession();
 		if (foro.getFecha() == null) {
 			foro.setFecha(new Date());

@@ -17,6 +17,7 @@ package org.javamexico.entity.blog;
 import java.util.Date;
 import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -26,6 +27,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
+import org.hibernate.annotations.Formula;
 import org.javamexico.entity.Usuario;
 
 /** Representa un comentario hecho en el blog de un usuario.
@@ -36,6 +38,7 @@ import org.javamexico.entity.Usuario;
 public class BlogComent {
 
 	private int cid;
+	private int votos;
 	private BlogPost blog;
 	private Usuario user;
 	private BlogComent rt;
@@ -53,6 +56,7 @@ public class BlogComent {
 		cid = value;
 	}
 
+	@Column(name="coment")
 	public String getComentario() {
 		return coment;
 	}
@@ -100,6 +104,14 @@ public class BlogComent {
 	}
 	public void setRespuestas(Set<BlogComent> value) {
 		resps = value;
+	}
+
+	@Formula("((select count(*) from voto_blog_coment vr where vr.cid=cid and vr.up)-(select count(*) from voto_blog_coment vr where vr.cid=cid and not vr.up))")
+	public int getVotos() {
+		return votos;
+	}
+	public void setVotos(int value) {
+		votos = value;
 	}
 
 }

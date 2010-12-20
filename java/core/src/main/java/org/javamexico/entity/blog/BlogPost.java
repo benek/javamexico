@@ -17,15 +17,20 @@ package org.javamexico.entity.blog;
 import java.util.Date;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
+import org.hibernate.annotations.Formula;
 import org.javamexico.entity.Usuario;
 
 /** Representa una entrada en el blog de un usuario.
@@ -37,10 +42,12 @@ public class BlogPost {
 
 	private int bid;
 	private int status;
+	private int votos;
 	private Usuario user;
 	private Date fecha;
 	private String titulo;
 	private String texto;
+	private Set<TagBlog> tags;
 	private Set<BlogComent> comms;
 	private boolean coments; //permite comentarios o no
 
@@ -70,6 +77,7 @@ public class BlogPost {
 		user = value;
 	}
 
+	@Column(name="fecha_alta")
 	public Date getFecha() {
 		return fecha;
 	}
@@ -91,6 +99,7 @@ public class BlogPost {
 		texto = value;
 	}
 
+	@Column(name="comments")
 	public boolean isPermiteComentarios() {
 		return coments;
 	}
@@ -105,5 +114,32 @@ public class BlogPost {
 	public void setComentarios(Set<BlogComent> value) {
 		comms = value;
 	}
+
+    @Formula("((select count(*) from voto_blog cvo where cvo.bid=bid and cvo.up)-(select count(*) from voto_blog cvo where cvo.bid=bid and not cvo.up))")
+    public int getVotos() {
+        return votos;
+    }
+    public void setVotos(int value) {
+        votos = value;
+    }
+
+	@ManyToMany(cascade=CascadeType.PERSIST)
+	@JoinTable(name="tag_blog_join",
+			joinColumns=@JoinColumn(name="bid"),
+			inverseJoinColumns=@JoinColumn(name="tid"))
+    public Set<TagBlog> getTags() {
+    	return tags;
+    }
+    public void setTags(Set<TagBlog> value) {
+    	tags = value;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+    	if (obj instanceof BlogPost) {
+    		return ((BlogPost)obj).getBid() == bid;
+    	}
+    	return false;
+    }
 
 }

@@ -16,12 +16,13 @@ package org.javamexico.dao;
 
 import org.javamexico.entity.blog.BlogPost;
 import org.javamexico.entity.blog.BlogComent;
+import org.javamexico.entity.blog.TagBlog;
 import org.javamexico.entity.blog.VotoBlog;
 import org.javamexico.entity.blog.VotoComentBlog;
 import org.javamexico.entity.Usuario;
 
-import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 /** Define la funcionalidad del DAO para manejo de la seccion de blogs.
  * 
@@ -35,8 +36,11 @@ public interface BlogDao {
 	public List<BlogPost> getUserBlog(Usuario user, boolean published);
 
 	/** Devuelve las entradas mas recientes de blogs publicadas, sin importar el autor.
-	 * @param desde La fecha a partir de la cual se toman los blogs. */
-	public List<BlogPost> getBlogsRecientes(Date desde);
+	 * @param cuantos El limite de resultados a devolver. */
+	public List<BlogPost> getBlogsRecientes(int cuantos);
+
+	/** Devuelve las entradas con mayor numero de votos (positivos-negativos). */
+	public List<BlogPost> getBlogsMasVotados(int cuantos);
 
 	/** Devuelve la entrada de blog con la clave especificada. */
 	public BlogPost getBlog(int id);
@@ -49,11 +53,17 @@ public interface BlogDao {
 
 	public void delete(BlogPost post);
 
-	/** Agrega un comentario al blog indicado, como respuesta al comentario especificado.
-	 * @param coment El comentario a agregar
-	 * @param post El blog al cual se va a agregar el comentario
+	/** Agrega un comentario al blog indicado.
+	 * @param coment El comentario a agregar.
+	 * @param post El blog al cual se va a agregar el comentario.
+	 * @param autor El usuario que hace el comentario. */
+	public BlogComent addComment(String coment, BlogPost post, Usuario autor);
+
+	/** Agrega un comentario como respuesta a otro comentario.
+	 * @param coment El comentario a agregar.
+	 * @param autor El usuario que hace el comentario. 
 	 * @param parent El comentario al cual se esta contestando (opcional). */
-	public void addComment(BlogComent coment, BlogPost post, BlogComent parent);
+	public BlogComent addComment(String coment, BlogComent parent, Usuario autor);
 
 	/** Emite un voto del usuario al post de un blog. Si el usuario ya habia votado por el blog, se actualiza el voto. */
 	public VotoBlog votaBlog(Usuario user, BlogPost post, boolean up);
@@ -65,5 +75,21 @@ public interface BlogDao {
 	public VotoBlog findVotoBlog(Usuario user, BlogPost post);
 
 	public VotoComentBlog findVotoComent(Usuario user, BlogComent comm);
+
+	public List<BlogPost> getBlogsConTag(TagBlog tag);
+	public List<BlogPost> getBlogsConTag(String tag);
+
+	public List<BlogPost> getBlogsConTags(Set<TagBlog> tags);
+
+	public void addTag(String tag, BlogPost blog);
+
+	public List<TagBlog> findMatchingTags(String parcial);
+	public List<TagBlog> getTagsPopulares(int cuantos);
+
+	/** Devuelve el tag que tenga exactamente el nombre que se indica (sin importar mayusc/minusc) */
+	public TagBlog findTag(String tag);
+
+	/** Devuelve los tags que coincidan con los tags que se indiquen (sin importar mayusc/minusc) */
+	public List<TagBlog> findTags(String... tag);
 
 }
