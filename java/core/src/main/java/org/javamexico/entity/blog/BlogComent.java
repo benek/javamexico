@@ -26,6 +26,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
+import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.Formula;
 import org.javamexico.entity.Usuario;
@@ -57,6 +58,7 @@ public class BlogComent {
 	}
 
 	@Column(name="coment")
+	@Size(min=10, max=2000)
 	public String getComentario() {
 		return coment;
 	}

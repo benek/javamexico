@@ -29,6 +29,10 @@ import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 /** Representa un usuario del sistema.
  * 
@@ -59,7 +63,8 @@ public class Usuario implements Comparable<Usuario> {
 		uid = value;
 	}
 
-	@Column(unique=true, name="uname", updatable=false)
+	@Column(unique=true, name="uname", updatable=false, length=20)
+	@Size(min=2, max=20)
 	public String getUsername() {
 		return uname;
 	}
@@ -67,6 +72,7 @@ public class Usuario implements Comparable<Usuario> {
 		uname = value;
 	}
 
+	@Size(min=3, max=80)
 	public String getNombre() {
 		return nombre;
 	}
@@ -74,8 +80,9 @@ public class Usuario implements Comparable<Usuario> {
 		nombre = value;
 	}
 
-    //TODO ponerle regex o algo para validar formato de mail
-    @Column(unique=true, name="email", updatable=true)
+    @Column(unique=true, name="email", updatable=true, length=80)
+	@Pattern(regexp="[\\w\\._%-]+@\\w+(\\.\\w+)+")
+	@Size(max=80)
     public String getEmail() {
         return email;
     }
@@ -99,6 +106,7 @@ public class Usuario implements Comparable<Usuario> {
 		alta = value;
 	}
 
+	@Min(0) @Max(10)
 	public int getStatus() {
 		return status;
 	}

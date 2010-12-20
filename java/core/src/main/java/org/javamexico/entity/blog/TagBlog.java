@@ -26,6 +26,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
+import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.Formula;
 import org.javamexico.entity.TagUsuario;
@@ -60,6 +61,7 @@ public class TagBlog {
 		count = value;
 	}
 
+	@Size(min=3, max=80)
 	public String getTag() {
 		return tag;
 	}

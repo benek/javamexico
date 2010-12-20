@@ -19,6 +19,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
+import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.Formula;
 
@@ -51,6 +52,7 @@ public class TagUsuario {
 		count = value;
 	}
 
+	@Size(min=3, max=40)
 	public String getTag() {
 		return tag;
 	}

@@ -29,6 +29,9 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.Formula;
 import org.javamexico.entity.Usuario;
@@ -61,6 +64,7 @@ public class BlogPost {
 		bid = value;
 	}
 
+	@Min(0) @Max(10)
 	public int getStatus() {
 		return status;
 	}
@@ -85,6 +89,7 @@ public class BlogPost {
 		fecha = value;
 	}
 
+	@Size(min=10, max=400)
 	public String getTitulo() {
 		return titulo;
 	}
@@ -92,6 +97,7 @@ public class BlogPost {
 		titulo = value;
 	}
 
+	@Size(min=50, max=4000)
 	public String getTexto() {
 		return texto;
 	}

@@ -10,6 +10,11 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 /** Representa una empresa, que puede registrar anuncios, avisos y ofertas de trabajo.
  * 
@@ -39,6 +44,7 @@ public class Empresa {
 		this.eid = eid;
 	}
 
+	@Min(0) @Max(10)
 	public int getStatus() {
 		return status;
 	}
@@ -55,6 +61,7 @@ public class Empresa {
 		this.fechaAlta = fechaAlta;
 	}
 
+	@Size(min=6, max=80)
 	public String getNombre() {
 		return nombre;
 	}
@@ -70,7 +77,8 @@ public class Empresa {
 		this.password = password;
 	}
 
-	@Column(name="nom_contacto")
+	@Column(name="nom_contacto", length=80)
+	@Size(min=6, max=80)
 	public String getNombreContacto() {
 		return nombreContacto;
 	}
@@ -78,7 +86,9 @@ public class Empresa {
 		this.nombreContacto = nombreContacto;
 	}
 
-	@Column(name="mail_contacto")
+	@Column(name="mail_contacto", length=80)
+	@Pattern(regexp="[\\w\\._%-]+@\\w+(\\.\\w+)+")
+	@Size(max=80)
 	public String getMailContacto() {
 		return emailContacto;
 	}
@@ -86,6 +96,8 @@ public class Empresa {
 		this.emailContacto = emailContacto;
 	}
 
+	//@Pattern(regexp="^(\\+\\d)*\\s*(\\(\\d{3}\\)\\s*)*\\d{3}(-{0,1}|\\s{0,1})\\d{2}(-{0,1}|\\s{0,1})\\d{2}$")
+	@Pattern(regexp="\\d{10}")
 	public String getTelefono1() {
 		return fon1;
 	}
@@ -93,6 +105,7 @@ public class Empresa {
 		this.fon1 = fon1;
 	}
 
+	@Pattern(regexp="\\d{10}")
 	public String getTelefono2() {
 		return fon2;
 	}
@@ -100,6 +113,7 @@ public class Empresa {
 		this.fon2 = fon2;
 	}
 
+	@Size(min=4, max=1024)
 	public String getUrl() {
 		return url;
 	}
