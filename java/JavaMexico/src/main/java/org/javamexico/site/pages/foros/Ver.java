@@ -35,12 +35,12 @@ import org.slf4j.Logger;
  */
 public class Ver extends Pagina {
 
-	@Inject
-	@Service("foroDao")
+	@Inject @Service("foroDao")
 	private ForoDao fdao;
 	@Inject private Logger log;
 	@Property private Foro foro;
 	@Property private Foro otrof;
+    @SuppressWarnings("unused")
 	@Property private TagForo tag;
 	@Property private ComentForo coment;
 	@Property private ComentForo comresp;

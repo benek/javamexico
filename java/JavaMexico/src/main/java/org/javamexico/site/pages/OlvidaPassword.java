@@ -16,11 +16,11 @@ import org.slf4j.Logger;
  * Date: Dec 8, 2010 Time: 10:53:36 AM
  */
 public class OlvidaPassword {
-    @Inject
-    private Logger log;
+    @Inject private Logger log;
     @Property private String email;
     @Inject @Service("usuarioDao")
     private UserDao udao;
+    @SuppressWarnings("unused")
     @Property private String mensaje;
     @Inject private UserPasswordManager passman;
 

@@ -22,8 +22,10 @@ public class Tema {
 	private ForoDao fdao;
 	@Inject private Request request;
 	@Property private TemaForo tema;
+    @SuppressWarnings("unused")
 	@Property private Foro foro;
 	@Property private int pagina = 1;
+    @SuppressWarnings("unused")
 	@Property private boolean lastPage;
 
 	void onActivate(int tid) {

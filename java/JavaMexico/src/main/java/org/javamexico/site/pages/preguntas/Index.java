@@ -32,13 +32,12 @@ import org.javamexico.site.base.Pagina;
 @Import(stylesheet="context:layout/preguntas.css")
 public class Index extends Pagina {
 
-	@Inject
-	@Service("preguntaDao")
+	@Inject @Service("preguntaDao")
 	private PreguntaDao pdao;
-	@Property
-	private Pregunta pregunta;
-	@Property
-	private TagPregunta tag;
+	@SuppressWarnings("unused")
+	@Property private Pregunta pregunta;
+	@SuppressWarnings("unused")
+	@Property private TagPregunta tag;
 	//El tag para buscar preguntas
 	private String stag;
 

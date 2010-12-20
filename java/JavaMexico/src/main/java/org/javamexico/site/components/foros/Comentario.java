@@ -12,6 +12,7 @@ import org.javamexico.entity.foro.ComentForo;
  * 
  * @author Enrique Zamudio
  */
+@SuppressWarnings("unused")
 public class Comentario {
 
 	@Parameter(required=true, defaultPrefix="prop")

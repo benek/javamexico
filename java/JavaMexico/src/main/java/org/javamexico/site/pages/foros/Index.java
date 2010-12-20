@@ -36,7 +36,9 @@ public class Index extends Pagina {
 	@Inject
 	@Service("foroDao")
 	private ForoDao fdao;
+	@SuppressWarnings("unused")
 	@Property private Foro foro;
+	@SuppressWarnings("unused")
 	@Property private TagForo tag;
 	@Property private TemaForo tema;
 	//El tag para buscar foros

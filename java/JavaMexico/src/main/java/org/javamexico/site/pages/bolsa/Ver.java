@@ -22,6 +22,7 @@ public class Ver extends Pagina {
     private BolsaTrabajoDao bdao;
     @Property private Oferta oferta;
     @Property private Oferta otraof;
+    @SuppressWarnings("unused")
     @Property private Tag tag;
 
     Object onActivate(String ids) {

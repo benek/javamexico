@@ -14,20 +14,19 @@ import org.javamexico.site.base.Pagina;
 @Import(stylesheet="context:layout/layout.css")
 public class Layout extends Pagina {
     /** The page title, for the <title> element and the <h1> element. */
-    @Property
     @Parameter(required = true, defaultPrefix = BindingConstants.LITERAL)
-    private String title;
+    @SuppressWarnings("unused")
+    @Property private String title;
 
-    @Property
-    private String pageName;
+    @Property private String pageName;
 
-    @Property
     @Parameter(defaultPrefix = BindingConstants.LITERAL)
-    private String sidebarTitle;
+    @SuppressWarnings("unused")
+    @Property private String sidebarTitle;
 
-    @Property
     @Parameter(defaultPrefix = BindingConstants.LITERAL)
-    private Block sidebar;
+    @SuppressWarnings("unused")
+    @Property private Block sidebar;
 
     @Inject
     private ComponentResources resources;

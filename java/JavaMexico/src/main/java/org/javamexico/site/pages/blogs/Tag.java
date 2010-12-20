@@ -12,14 +12,14 @@ import org.javamexico.dao.BlogDao;
 import org.javamexico.entity.blog.BlogPost;
 import org.javamexico.entity.blog.TagBlog;
 import org.javamexico.site.base.Pagina;
-import org.slf4j.Logger;
 
 @Import(stylesheet="context:layout/preguntas.css")
 public class Tag extends Pagina {
 
-	@Inject private Logger log;
 	@Property private Set<TagBlog> tags;
+	@SuppressWarnings("unused")
 	@Property private BlogPost blog;
+	@SuppressWarnings("unused")
 	@Property private TagBlog tag;
 	@Property private TagBlog elTag;
 	@Inject @Service("blogDao")
@@ -45,10 +45,8 @@ public class Tag extends Pagina {
 
 	public List<BlogPost> getBlogs() {
 		if (elTag == null) {
-			log.info("Buscando blogs para tags {}", tags);
 			return bdao.getBlogsConTags(tags);
 		} else {
-			log.info("Buscando blogs para tag '{}'", elTag.getTag());
 			return bdao.getBlogsConTag(elTag);
 		}
 	}

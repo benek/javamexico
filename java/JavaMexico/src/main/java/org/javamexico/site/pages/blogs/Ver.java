@@ -19,9 +19,12 @@ public class Ver extends Pagina {
 
 	@Property private BlogPost blog;
 	@Property private BlogPost otrob;
+    @SuppressWarnings("unused")
 	@Property private TagBlog tag;
 	@Property private BlogComent coment;
+    @SuppressWarnings("unused")
 	@Property private BlogComent comresp;
+    @SuppressWarnings("unused")
 	@Property private String commtext;
 	@Inject @Service("blogDao")
 	private BlogDao bdao;

@@ -28,13 +28,11 @@ import org.javamexico.entity.pregunta.Pregunta;
  */
 public class PorTag {
 
-	@Property
-	private String tag;
-	@Inject
-	@Service("preguntaDao")
+	@Property private String tag;
+	@Inject @Service("preguntaDao")
 	private PreguntaDao pdao;
-	@Property
-	private Pregunta pregunta;
+    @SuppressWarnings("unused")
+	@Property private Pregunta pregunta;
 
 	void onActivate(String value) {
 		tag = value;

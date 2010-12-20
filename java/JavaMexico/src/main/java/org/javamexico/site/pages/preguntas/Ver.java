@@ -45,9 +45,12 @@ public class Ver extends Pagina {
 	@Property private Pregunta pregunta;
 	@Property private Pregunta otrap;
 	@Property private Respuesta resp;
+    @SuppressWarnings("unused")
 	@Property private TagPregunta tag;
 	@Property private String resptext;
+    @SuppressWarnings("unused")
 	@Property private ComentPregunta pcomm;
+    @SuppressWarnings("unused")
 	@Property private ComentRespuesta rcomm;
 	private int rid;
 	@Inject

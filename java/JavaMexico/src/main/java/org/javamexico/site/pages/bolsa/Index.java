@@ -20,7 +20,9 @@ public class Index extends Pagina {
 
     @Inject @Service("bolsaDao")
     private BolsaTrabajoDao bdao;
+	@SuppressWarnings("unused")
     @Property private Oferta oferta;
+	@SuppressWarnings("unused")
     @Property private Tag tag;
     @Property private String stag;
 

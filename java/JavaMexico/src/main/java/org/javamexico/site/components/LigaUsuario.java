@@ -41,6 +41,7 @@ public class LigaUsuario extends Pagina {
 	@Inject private Logger log;
 	/** Este es el texto de la liga cuando ya hay usuario en la sesion. */
 	@Parameter(required=true, defaultPrefix="literal")
+    @SuppressWarnings("unused")
 	@Property private String text;
 	/** El username para la forma de login. */
 	@Property private String uname;
@@ -50,8 +51,7 @@ public class LigaUsuario extends Pagina {
 	@Inject private Block innerBlock;
 	/** Este bloque contiene la forma de login que se muestra si el usuario no esta registrado. */
 	@Inject private Block loginBlock;
-	@Inject
-	@Service("usuarioDao")
+	@Inject @Service("usuarioDao")
 	private UserDao udao;
 	@InjectComponent
 	private Form login;

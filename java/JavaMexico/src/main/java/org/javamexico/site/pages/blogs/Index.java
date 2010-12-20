@@ -21,7 +21,9 @@ public class Index extends Pagina {
 	@Inject @Service("usuarioDao")
 	private UserDao udao;
 	@Property private Usuario usuario;
+	@SuppressWarnings("unused")
 	@Property private TagBlog tag;
+	@SuppressWarnings("unused")
 	@Property private BlogPost blog;
 
 	void onActivate(int uid) {
