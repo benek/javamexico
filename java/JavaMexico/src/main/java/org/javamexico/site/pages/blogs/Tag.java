@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.apache.tapestry5.annotations.Import;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.annotations.Service;
 import org.apache.tapestry5.ioc.annotations.Inject;
@@ -13,6 +14,7 @@ import org.javamexico.entity.blog.TagBlog;
 import org.javamexico.site.base.Pagina;
 import org.slf4j.Logger;
 
+@Import(stylesheet="context:layout/preguntas.css")
 public class Tag extends Pagina {
 
 	@Inject private Logger log;

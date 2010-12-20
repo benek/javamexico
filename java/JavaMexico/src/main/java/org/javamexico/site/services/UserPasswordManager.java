@@ -1,15 +1,6 @@
 package org.javamexico.site.services;
 
-import org.apache.tapestry5.annotations.Service;
-import org.apache.tapestry5.ioc.annotations.Inject;
-import org.javamexico.dao.UserDao;
 import org.javamexico.entity.Usuario;
-import org.javamexico.util.Base64;
-
-import javax.crypto.Cipher;
-import javax.crypto.spec.IvParameterSpec;
-import javax.crypto.spec.SecretKeySpec;
-import java.security.GeneralSecurityException;
 
 /** Este componente hace el manejo de passwords de los usuarios:
  * - Genera tokens para usuarios que han olvidado su password

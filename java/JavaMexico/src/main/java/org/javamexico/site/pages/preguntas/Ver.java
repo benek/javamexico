@@ -16,7 +16,7 @@ package org.javamexico.site.pages.preguntas;
 	
 import java.util.List;
 
-import org.apache.tapestry5.annotations.IncludeStylesheet;
+import org.apache.tapestry5.annotations.Import;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.annotations.Service;
 import org.apache.tapestry5.ioc.annotations.Inject;
@@ -34,7 +34,7 @@ import org.slf4j.Logger;
  * 
  * @author Enrique Zamudio
  */
-@IncludeStylesheet("context:layout/preguntas.css")
+@Import(stylesheet="context:layout/preguntas.css")
 public class Ver extends Pagina {
 
 	@Inject

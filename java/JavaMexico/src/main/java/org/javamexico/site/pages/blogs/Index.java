@@ -2,6 +2,7 @@ package org.javamexico.site.pages.blogs;
 
 import java.util.List;
 
+import org.apache.tapestry5.annotations.Import;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.annotations.Service;
 import org.apache.tapestry5.ioc.annotations.Inject;
@@ -12,6 +13,7 @@ import org.javamexico.entity.blog.BlogPost;
 import org.javamexico.entity.blog.TagBlog;
 import org.javamexico.site.base.Pagina;
 
+@Import(stylesheet="context:layout/preguntas.css")
 public class Index extends Pagina {
 
 	@Inject @Service("blogDao")

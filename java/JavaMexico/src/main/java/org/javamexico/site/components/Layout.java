@@ -11,7 +11,7 @@ import org.javamexico.site.base.Pagina;
 /**
  * Layout component for pages of application JavaMexico.
  */
-@IncludeStylesheet("context:layout/layout.css")
+@Import(stylesheet="context:layout/layout.css")
 public class Layout extends Pagina {
     /** The page title, for the <title> element and the <h1> element. */
     @Property

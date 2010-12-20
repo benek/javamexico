@@ -16,7 +16,7 @@ package org.javamexico.site.pages.foros;
 
 import java.util.List;
 
-import org.apache.tapestry5.annotations.IncludeStylesheet;
+import org.apache.tapestry5.annotations.Import;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.annotations.Service;
 import org.apache.tapestry5.ioc.annotations.Inject;
@@ -30,7 +30,7 @@ import org.javamexico.site.base.Pagina;
  * 
  * @author Enrique Zamudio
  */
-@IncludeStylesheet("context:layout/preguntas.css")
+@Import(stylesheet="context:layout/preguntas.css")
 public class Index extends Pagina {
 
 	@Inject

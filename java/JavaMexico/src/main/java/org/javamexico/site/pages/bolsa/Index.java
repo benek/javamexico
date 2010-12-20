@@ -1,6 +1,6 @@
 package org.javamexico.site.pages.bolsa;
 
-import org.apache.tapestry5.annotations.IncludeStylesheet;
+import org.apache.tapestry5.annotations.Import;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.annotations.Service;
 import org.apache.tapestry5.ioc.annotations.Inject;
@@ -9,14 +9,13 @@ import org.javamexico.entity.bolsa.Oferta;
 import org.javamexico.entity.bolsa.Tag;
 import org.javamexico.site.base.Pagina;
 
-import java.util.Date;
 import java.util.List;
 
 /** Pagina principal del modulo de bolsa de trabajo.
  * 
  * @author Enrique Zamudio
  */
-@IncludeStylesheet("context:layout/preguntas.css")
+@Import(stylesheet="context:layout/preguntas.css")
 public class Index extends Pagina {
 
     @Inject @Service("bolsaDao")
