@@ -31,6 +31,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.Formula;
+import org.javamexico.entity.Comment;
 import org.javamexico.entity.Usuario;
 
 /** Representa un comentario hecho en un foro por un usuario registrado.
@@ -38,7 +39,7 @@ import org.javamexico.entity.Usuario;
  * @author Enrique Zamudio
  */
 @Entity(name="coment_foro")
-public class ComentForo implements Comparable<ComentForo> {
+public class ComentForo implements Comparable<ComentForo>, Comment {
 
 	private int cfid;
 	private Foro foro;

@@ -25,10 +25,12 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 import javax.persistence.SequenceGenerator;
 import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.Formula;
+import org.javamexico.entity.Comment;
 import org.javamexico.entity.Usuario;
 
 /** Representa un comentario hecho en el blog de un usuario.
@@ -36,7 +38,7 @@ import org.javamexico.entity.Usuario;
  * @author Enrique Zamudio
  */
 @Entity(name="blog_coment")
-public class BlogComent {
+public class BlogComent implements Comment {
 
 	private int cid;
 	private int votos;
@@ -100,7 +102,8 @@ public class BlogComent {
 		rt = value;
 	}
 
-	@OneToMany(mappedBy="cid")
+	@OneToMany(mappedBy="inReplyTo")
+	@OrderBy("fecha DESC")
 	public Set<BlogComent> getRespuestas() {
 		return resps;
 	}

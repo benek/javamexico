@@ -22,7 +22,7 @@ public class VotoComentBlog {
 	private BlogComent coment;
 
 	@Id
-	@SequenceGenerator(name="pk", sequenceName="boto_blog_vid_seq", allocationSize=1)
+	@SequenceGenerator(name="pk", sequenceName="voto_blog_vid_seq", allocationSize=1)
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="pk")
 	public int getVid() {
 		return vid;
