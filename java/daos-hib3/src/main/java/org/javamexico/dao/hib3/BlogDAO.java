@@ -1,10 +1,12 @@
 package org.javamexico.dao.hib3;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
 import org.hibernate.Criteria;
+import org.hibernate.LockMode;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.MatchMode;
@@ -31,6 +33,32 @@ public class BlogDAO implements BlogDao {
 	protected final Logger log = LoggerFactory.getLogger(getClass());
 	private SessionFactory sfact;
 	private int minRepAddComent = 5;
+	private int minRepVotaBd = 20;
+	private int minRepVotaCd = 10;
+	private int minRepVotaBu = 5;
+	private int minRepVotaCu = 3;
+	private int minRepAddBlog = 20;
+
+	/** Establece la reputacion minima que debe tener un usuario para agregar un post al blog de un usuario. */
+	public void setMinRepAddBlog(int value) {
+		minRepAddBlog = value;
+	}
+	/** Establece la reputacion minima que debe tener un usuario para dar un voto negativo a un blog. */
+	public void setMinRepVotoBlogDown(int value) {
+		minRepVotaBd = value;
+	}
+	/** Establece la reputacion minima que debe tener un usuario para dar un voto negativo a un comentario de blog. */
+	public void setMinRepVotoComentDown(int value) {
+		minRepVotaCd = value;
+	}
+	/** Establece la reputacion minima que debe tener un usuario para dar un voto positivo a un blog. */
+	public void setMinRepVotoBlogUp(int value) {
+		minRepVotaBu = value;
+	}
+	/** Establece la reputacion minima que debe tener un usuario para dar un voto positivo a un comentario de blog. */
+	public void setMinRepVotoComentUp(int value) {
+		minRepVotaCu = value;
+	}
 
 	/** Establece la reputacion minima que debe tener un usuario para agregar un comentario a un blog. */
 	public void setMinRepComentar(int value) {
@@ -82,8 +110,16 @@ public class BlogDAO implements BlogDao {
 	@Override
 	public List<BlogComent> getComentarios(BlogPost blog, int pageSize,
 			int page, boolean crono) {
-		// TODO Auto-generated method stub
-		return null;
+		Session sess = sfact.getCurrentSession();
+		Order order = crono ? Order.desc("fecha") : Order.desc("votos");
+		@SuppressWarnings("unchecked")
+		List<BlogComent> coms = sess.createCriteria(BlogComent.class).add(
+				Restrictions.eq("blog", blog)).add(Restrictions.isNull("inReplyTo")).setFirstResult(
+						(page-1)*pageSize).setMaxResults(pageSize).addOrder(order).list();
+		for (BlogComent cf : coms) {
+			cf.getRespuestas().size();
+		}
+		return coms;
 	}
 
 	@Override
@@ -109,29 +145,105 @@ public class BlogDAO implements BlogDao {
 		if (autor.getReputacion() < minRepAddComent) {
 			throw new PrivilegioInsuficienteException("El usuario no tiene suficiente reputacion para agregar comentarios");
 		}
-		// TODO Auto-generated method stub
-		return null;
+		Session sess = sfact.getCurrentSession();
+		BlogComent cmt = new BlogComent();
+		cmt.setAutor(autor);
+		cmt.setBlog(post);
+		cmt.setComentario(coment);
+		cmt.setFecha(new Date());
+		sess.save(cmt);
+		return cmt;
 	}
 	@Override
 	public BlogComent addComment(String coment, BlogComent parent, Usuario autor) {
 		if (autor.getReputacion() < minRepAddComent) {
 			throw new PrivilegioInsuficienteException("El usuario no tiene suficiente reputacion para agregar comentarios");
 		}
-		// TODO Auto-generated method stub
-		return null;
+		Session sess = sfact.getCurrentSession();
+		BlogComent cmt = new BlogComent();
+		cmt.setAutor(autor);
+		cmt.setBlog(parent.getBlog());
+		cmt.setComentario(coment);
+		cmt.setFecha(new Date());
+		cmt.setInReplyTo(parent);
+		sess.save(cmt);
+		sess.flush();
+		sess.refresh(parent);
+		parent.getRespuestas().size();
+		return cmt;
 	}
 
 	@Override
 	public VotoBlog votaBlog(Usuario user, BlogPost post, boolean up) {
-		// TODO Auto-generated method stub
-		return null;
+		if ((up && user.getReputacion() < minRepVotaBu) || (!up && user.getReputacion() < minRepVotaBd)) {
+			throw new PrivilegioInsuficienteException("El usuario no tiene privilegio suficiente para votar por un blog");
+		}
+		Session sess = sfact.getCurrentSession();
+		//Buscamos el voto a ver si ya se hizo
+		VotoBlog voto = findVotoBlog(user, post);
+		int uprep = 0;
+		if (voto == null) {
+			//Si no existe lo creamos
+			voto = new VotoBlog();
+			voto.setFecha(new Date());
+			voto.setBlog(post);
+			voto.setUp(up);
+			voto.setUser(user);
+			sess.save(voto);
+			uprep = up ? 1 : -1;
+		} else if (voto.isUp() != up) {
+			//Si ya existe pero quieren cambio, se actualiza
+			voto.setFecha(new Date());
+			voto.setUp(up);
+			sess.update(voto);
+			uprep = up ? 2 : -2;
+		}
+		if (uprep != 0) {
+			sess.refresh(post);
+			//Esto no es nada intuitivo pero si no lo hago asi, se arroja una excepcion marciana de Hib
+			user = (Usuario)sess.merge(post.getAutor());
+			sess.lock(user, LockMode.UPGRADE);
+			sess.refresh(user);
+			user.setReputacion(user.getReputacion() + uprep);
+			sess.update(user);
+			sess.flush();
+		}
+		return voto;
 	}
 
 	@Override
 	public VotoComentBlog votaComentario(Usuario user, BlogComent comm,
 			boolean up) {
-		// TODO Auto-generated method stub
-		return null;
+		if ((up && user.getReputacion() < minRepVotaCu) || (!up && user.getReputacion() < minRepVotaCd)) {
+			throw new PrivilegioInsuficienteException("El usuario no tiene privilegio suficiente para votar por un comentario");
+		}
+		Session sess = sfact.getCurrentSession();
+		VotoComentBlog voto = findVotoComent(user, comm);
+		int uprep = 0;
+		if (voto == null) {
+			voto = new VotoComentBlog();
+			voto.setFecha(new Date());
+			voto.setComent(comm);
+			voto.setUp(up);
+			voto.setUser(user);
+			sess.save(voto);
+			uprep = up ? 1 : -1;
+		} else if (voto.isUp() != up) {
+			voto.setUp(up);
+			voto.setFecha(new Date());
+			sess.update(voto);
+			uprep = up ? 2 : -2;
+		}
+		if (uprep != 0) {
+			sess.refresh(comm);
+			user = (Usuario)sess.merge(comm.getAutor());
+			sess.lock(user, LockMode.UPGRADE);
+			sess.refresh(user);
+			user.setReputacion(user.getReputacion() + uprep);
+			sess.update(user);
+			sess.flush();
+		}
+		return voto;
 	}
 
 	@Override
