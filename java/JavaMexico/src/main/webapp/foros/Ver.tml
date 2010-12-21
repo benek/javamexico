@@ -54,7 +54,7 @@ ${coment.votos} votos <t:if test="userExists">
 	</li></t:loop>
 </t:zone>
 
-<t:ligausuario text="Agregar una respuesta">
+<t:ligausuario text="Agregar un comentario">
 	<t:form t:id="comentar">
 	<t:textarea t:value="commtext" cols="60" rows="10" t:id="commtext" />
 	<br/><t:submit value="Comentar" />

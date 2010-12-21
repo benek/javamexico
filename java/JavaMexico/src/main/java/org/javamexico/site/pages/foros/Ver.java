@@ -67,7 +67,6 @@ public class Ver extends Pagina {
 		if (foro == null) {
 			return Index.class;
 		} else if (cid > 0) {
-			//TODO buscar el comentario especifico
 			for (ComentForo cf : getComents()) {
 				if (cf.getCfid() == cid) {
 					coment = cf;
