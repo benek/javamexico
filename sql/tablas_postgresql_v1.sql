@@ -14,7 +14,8 @@ CREATE TABLE usuario(
 	nombre     VARCHAR(80) NOT NULL,
 	status     INTEGER NOT NULL DEFAULT 2,
 	verificado BOOLEAN NOT NULL DEFAULT false,
-	reputacion INTEGER NOT NULL DEFAULT 1
+	reputacion INTEGER NOT NULL DEFAULT 1,
+	pass_token VARCHAR(80)
 );
 
 --Ligas a otros sitios (aqui se definen los sitios)
@@ -149,8 +150,8 @@ CREATE TABLE voto_coment_foro(
 	vid   SERIAL PRIMARY  KEY,
 	cfid  INTEGER NOT NULL REFERENCES coment_foro(cfid) ON DELETE CASCADE,
 	uid   INTEGER NOT NULL REFERENCES usuario(uid) ON DELETE CASCADE,
+	fecha TIMESTAMP NOT NULL,
 	up    BOOLEAN NOT NULL DEFAULT true,
-	fecha TIMESTAMP NOT NULL
 );
 
 --
