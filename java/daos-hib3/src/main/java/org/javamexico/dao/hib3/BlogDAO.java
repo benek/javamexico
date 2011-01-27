@@ -124,20 +124,29 @@ public class BlogDAO implements BlogDao {
 
 	@Override
 	public void insert(BlogPost post) {
-		// TODO Auto-generated method stub
-
+		Session sess = getSessionFactory().getCurrentSession();
+		Usuario aut = post.getAutor();
+		sess.refresh(aut);
+		if (aut.getReputacion() < minRepAddBlog) {
+			throw new PrivilegioInsuficienteException("El usuario no tiene suficiente reputacion para crear entradas en su blog");
+		}
+		post.setFecha(new Date());
+		sess.save(post);
+		post.getComentarios();
 	}
 
 	@Override
 	public void update(BlogPost post) {
-		// TODO Auto-generated method stub
-
+		Session sess = getSessionFactory().getCurrentSession();
+		sess.update(post);
+		sess.refresh(post);
+		post.getComentarios();
 	}
 
 	@Override
 	public void delete(BlogPost post) {
-		// TODO Auto-generated method stub
-
+		Session sess = getSessionFactory().getCurrentSession();
+		sess.delete(post);
 	}
 
 	@Override
@@ -248,14 +257,20 @@ public class BlogDAO implements BlogDao {
 
 	@Override
 	public VotoBlog findVotoBlog(Usuario user, BlogPost post) {
-		// TODO Auto-generated method stub
-		return null;
+		Session sess = sfact.getCurrentSession();
+		@SuppressWarnings("unchecked")
+		List<VotoBlog> v = sess.createCriteria(VotoBlog.class).add(Restrictions.eq("user", user)).add(
+				Restrictions.eq("blog", post)).setMaxResults(1).list();
+		return v.size() == 0 ? null : v.get(0);
 	}
 
 	@Override
 	public VotoComentBlog findVotoComent(Usuario user, BlogComent comm) {
-		// TODO Auto-generated method stub
-		return null;
+		Session sess = sfact.getCurrentSession();
+		@SuppressWarnings("unchecked")
+		List<VotoComentBlog> v = sess.createCriteria(VotoComentBlog.class).add(Restrictions.eq("user", user)).add(
+				Restrictions.eq("coment", comm)).setMaxResults(1).list();
+		return v.size() == 0 ? null : v.get(0);
 	}
 
 	@Override
@@ -292,20 +307,41 @@ public class BlogDAO implements BlogDao {
 
 	@Override
 	public void addTag(String tag, BlogPost blog) {
-		// TODO Auto-generated method stub
-
+		Session sess = sfact.getCurrentSession();
+		@SuppressWarnings("unchecked")
+		List<TagBlog> tags = sess.createCriteria(TagBlog.class).add(
+				Restrictions.ilike("tag", tag)).setMaxResults(1).list();
+		TagBlog _tag = null;
+		if (tags.size() == 0) {
+			_tag = new TagBlog();
+			_tag.setTag(tag);
+			sess.save(tag);
+			sess.flush();
+		} else {
+			_tag = tags.get(0);
+		}
+		if (blog.getTags() == null) {
+			sess.refresh(blog);
+		}
+		blog.getTags().add(_tag);
+		sess.update(blog);
+		blog.getTags().size();
 	}
 
 	@Override
 	public List<TagBlog> findMatchingTags(String parcial) {
-		// TODO Auto-generated method stub
-		return null;
+		Session sess = sfact.getCurrentSession();
+		@SuppressWarnings("unchecked")
+		List<TagBlog> tags = sess.createCriteria(TagBlog.class).add(
+				Restrictions.ilike("tag", parcial, MatchMode.ANYWHERE)).list();
+		return tags;
 	}
 
 	@Override
 	public List<TagBlog> getTagsPopulares(int cuantos) {
 		Session sess = sfact.getCurrentSession();
-		Criteria crit = sess.createCriteria(TagBlog.class).addOrder(Order.desc("count")).setMaxResults(cuantos);
+		Criteria crit = sess.createCriteria(TagBlog.class).addOrder(
+				Order.desc("count")).setMaxResults(cuantos);
 		@SuppressWarnings("unchecked")
 		List<TagBlog> tags = crit.list();
 		return tags;
@@ -313,7 +349,8 @@ public class BlogDAO implements BlogDao {
 
 	public TagBlog findTag(String tag) {
 		Session sess = sfact.getCurrentSession();
-		Criteria crit = sess.createCriteria(TagBlog.class).add(Restrictions.ilike("tag", tag, MatchMode.EXACT));
+		Criteria crit = sess.createCriteria(TagBlog.class).add(
+				Restrictions.ilike("tag", tag, MatchMode.EXACT));
 		@SuppressWarnings("unchecked")
 		List<TagBlog> t = crit.setMaxResults(1).list();
 		return t.size() == 0 ? null : t.get(0);

@@ -81,7 +81,9 @@ public interface ForoDao {
 
 	public void insert(TemaForo tema);
 	public void update(TemaForo tema);
-	public void delete(TemaForo tema);
+	/** Elimina un tema de foro, siempre y cuando no haya foros registrados bajo el tema.
+	 * @return true si el tema se puede eliminar, false si no se elimina porque hay contenido. */
+	public boolean delete(TemaForo tema);
 
 	/** Agrega un comentario al foro especificado.
 	 * @param coment El comentario a agregar.

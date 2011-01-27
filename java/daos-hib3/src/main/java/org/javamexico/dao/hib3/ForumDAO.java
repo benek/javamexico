@@ -390,13 +390,19 @@ public class ForumDAO implements ForoDao {
 		sess.update(tema);
 	}
 
-	public void delete(TemaForo tema) {
+	public boolean delete(TemaForo tema) {
 		if (tema.getFechaAlta() == null) {
 			tema.setFechaAlta(new Date());
 		}
 		Session sess = sfact.getCurrentSession();
-		//TODO ver si hay foros y negar borrado si hay.
-		sess.delete(tema);
+		@SuppressWarnings("unchecked")
+		List<Foro> foros = sess.createCriteria(Foro.class).add(Restrictions.eq("tema", tema)).setMaxResults(1).list();
+		if (foros.size() > 0) {
+			return false;
+		} else {
+			sess.delete(tema);
+		}
+		return true;
 	}
 
 	public List<Foro> getForosConTema(TemaForo tema, int page, int pageSize) {
