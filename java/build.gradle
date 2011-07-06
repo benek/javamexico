@@ -1,6 +1,6 @@
 //Aqui definimos las versiones de las dependencias mas usadas
 springVersion='3.0.5.RELEASE'
-tapestryVersion='5.2.6'
+tapestryVersion='5.3.0'
 defaultTasks 'build'
 
 //Le ponemos este plugin a TODOS los proyectos
