@@ -1,12 +1,14 @@
-
+//Aqui definimos las versiones de las dependencias mas usadas
 springVersion='3.0.5.RELEASE'
 tapestryVersion='5.2.6'
 defaultTasks 'build'
 
+//Le ponemos este plugin a TODOS los proyectos
 allprojects {
 	apply plugin:'java'
 }
 
+//Le ponemos algunas propiedades a todos los subproyectos
 subprojects {
 	repositories {
 		mavenLocal()
@@ -17,4 +19,5 @@ subprojects {
 	}
 }
 
+//Con esto se compilan todos los subproyectos desde aqui
 dependsOnChildren()

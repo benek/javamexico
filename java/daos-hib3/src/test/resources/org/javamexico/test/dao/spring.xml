@@ -8,6 +8,12 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
 
 <context:annotation-config />
+
+<bean class="org.javamexico.test.Setup" />
+
+<!-- se puede poner otro aqui como postgres.xml -->
+<import resource="h2.xml" />
+
 <tx:annotation-driven transaction-manager="hibTxManager" />
 
 <bean id="usuarioDao" class="org.springframework.aop.framework.ProxyFactoryBean">
@@ -57,15 +63,6 @@
 <bean id="hibTxManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
 	<property name="sessionFactory" ref="hibFactory" />
 	<property name="dataSource" ref="dataSource" />
-</bean>
-
-<bean id="hibFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
-	<property name="dataSource" ref="dataSource" />
-	<property name="packagesToScan" value="org.javamexico.entity" />
-	<property name="hibernateProperties"><value>
-		hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
-		hibernate.cache.provider_class=org.hibernate.cache.OSCacheProvider
-	</value></property>
 </bean>
 
 <bean id="hibInterceptor" class="org.springframework.orm.hibernate3.HibernateInterceptor">

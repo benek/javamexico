@@ -14,7 +14,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  * @author Enrique Zamudio
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations={"/org/javamexico/test/dao/spring.xml", "/org/javamexico/test/dao/postgres.xml"})
+@ContextConfiguration(locations={"/org/javamexico/test/dao/spring.xml"})
 public class TestUsuarios {
 
 	@Resource(name="usuarioDao")
@@ -30,6 +30,7 @@ public class TestUsuarios {
 			u1.setUsername("uname1");
 			u1.setPassword("password");
 			u1.setReputacion(20);
+			u1.setEmail("testmail1@test.com");
 			u1.setStatus(1);
 			udao.insert(u1);
 		} else {
@@ -41,6 +42,7 @@ public class TestUsuarios {
 			u2.setNombre("Segundo usuario de prueba");
 			u2.setUsername("uname2");
 			u2.setPassword("password");
+			u2.setEmail("test2@test.com");
 			u2.setReputacion(50);
 			u2.setStatus(1);
 			u2.setVerificado(true);
@@ -63,6 +65,7 @@ public class TestUsuarios {
 		if (u == null) {
 			u = new Usuario();
 			u.setNombre("Enrique Zamudio");
+			u.setEmail("ezl@javamexico.org");
 			u.setUsername("ezl");
 			u.setPassword("test");
 			u.setReputacion(50);
@@ -76,6 +79,7 @@ public class TestUsuarios {
 			u = new Usuario();
 			u.setNombre("Javier Benek");
 			u.setUsername("jb");
+			u.setEmail("benek@javamexico.org");
 			u.setPassword("test");
 			u.setReputacion(80);
 			u.setStatus(1);
@@ -90,6 +94,7 @@ public class TestUsuarios {
 			u.setNombre("Eric Camacho");
 			u.setUsername("ecamacho");
 			u.setPassword("test");
+			u.setEmail("erick@javamexico.org");
 			u.setReputacion(30);
 			u.setStatus(1);
 			udao.insert(u);
@@ -102,6 +107,7 @@ public class TestUsuarios {
 			u = new Usuario();
 			u.setNombre("Domingo Suarez");
 			u.setUsername("domix");
+			u.setEmail("domix@javamexico.org");
 			u.setPassword("test");
 			u.setReputacion(40);
 			u.setStatus(1);

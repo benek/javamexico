@@ -17,7 +17,7 @@ import java.util.List;
  * @author Enrique Zamudio
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations={"/org/javamexico/test/dao/spring.xml", "/org/javamexico/test/dao/postgres.xml"})
+@ContextConfiguration(locations={"/org/javamexico/test/dao/spring.xml"})
 public class TestBolsa {
     @Resource(name="bolsaDao")
     private BolsaTrabajoDao bdao;

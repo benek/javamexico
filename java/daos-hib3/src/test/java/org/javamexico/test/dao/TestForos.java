@@ -14,13 +14,13 @@ import org.javamexico.entity.foro.ComentForo;
 import org.javamexico.entity.foro.Foro;
 import org.javamexico.entity.foro.TagForo;
 import org.javamexico.entity.foro.TemaForo;
-import org.junit.Test;
+import org.junit.*;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations={"/org/javamexico/test/dao/spring.xml", "/org/javamexico/test/dao/postgres.xml"})
+@ContextConfiguration(locations={"/org/javamexico/test/dao/spring.xml"})
 public class TestForos {
 
 	@Resource(name="usuarioDao")
@@ -67,6 +67,12 @@ public class TestForos {
 		fdao.addTag("threads", foro);
 		ComentForo com = fdao.addComment("Comentario de prueba", foro, u2);
 		fdao.addComment("Respuesta al comentario de prueba", com, u1);
+		foro = new Foro();
+		foro.setAutor(u2);
+		foro.setTema(tema);
+		foro.setTitulo("Otro foro de prueba");
+		foro.setTexto("segundo foro de prueba");
+		fdao.insert(foro);
 	}
 
 	@Test

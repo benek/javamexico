@@ -9,8 +9,8 @@
 
 <bean id="dataSource" destroy-method="close"
 		class="com.mchange.v2.c3p0.ComboPooledDataSource">
-	<property name="driverClass" value="org.postgresql.Driver" />
-	<property name="jdbcUrl" value="jdbc:postgresql://localhost/javamexico" />
+	<property name="driverClass" value="org.h2.Driver" />
+	<property name="jdbcUrl" value="jdbc:h2:mem:jm2;MODE=PostgreSQL" />
 	<property name="user" value="javamex" />
 	<property name="password" value="javamex2" />
 	<property name="acquireIncrement" value="2" />
@@ -24,7 +24,7 @@
 	<property name="dataSource" ref="dataSource" />
 	<property name="packagesToScan" value="org.javamexico.entity" />
 	<property name="hibernateProperties"><value>
-		hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
+		hibernate.dialect=org.hibernate.dialect.H2Dialect
 		hibernate.cache.provider_class=org.hibernate.cache.OSCacheProvider
 	</value></property>
 </bean>

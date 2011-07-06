@@ -28,8 +28,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations={
-	"/org/javamexico/test/dao/spring.xml",
-	"/org/javamexico/test/dao/postgres.xml"
+	"/org/javamexico/test/dao/spring.xml"
 })
 public class TestVotos {
 

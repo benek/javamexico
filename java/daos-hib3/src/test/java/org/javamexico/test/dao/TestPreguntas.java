@@ -23,7 +23,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  * @author Enrique Zamudio
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations={"/org/javamexico/test/dao/spring.xml", "/org/javamexico/test/dao/postgres.xml"})
+@ContextConfiguration(locations={"/org/javamexico/test/dao/spring.xml"})
 public class TestPreguntas {
 
 	@Resource(name="usuarioDao")
