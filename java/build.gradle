@@ -1,0 +1,20 @@
+
+springVersion='3.0.5.RELEASE'
+tapestryVersion='5.2.6'
+defaultTasks 'build'
+
+allprojects {
+	apply plugin:'java'
+}
+
+subprojects {
+	repositories {
+		mavenLocal()
+		mavenCentral()
+	}
+	dependencies {
+		testCompile 'junit:junit:4.8.2'
+	}
+}
+
+dependsOnChildren()

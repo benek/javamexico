@@ -1,0 +1,9 @@
+apply plugin:'war'
+version='2.0'
+
+dependencies {
+	compile project(':daos-hib3'), "org.springframework:spring-web:${springVersion}",
+		"org.apache.tapestry:tapestry-core:${tapestryVersion}",
+		"org.apache.tapestry:tapestry-spring:${tapestryVersion}"
+	testCompile "org.apache.tapestry:tapestry-test:${tapestryVersion}"
+}

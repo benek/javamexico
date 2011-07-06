@@ -1,0 +1,8 @@
+version='2.0'
+
+dependencies {
+	compile 'javax.persistence:persistence-api:1.0', 'javax.validation:validation-api:1.0.0.GA',
+		'org.hibernate:hibernate-annotations:3.4.0.GA', 'org.slf4j:slf4j-api:1.6.1',
+		'org.hibernate:hibernate-core:3.3.2.GA'
+	testRuntime 'org.slf4j:slf4j-simple:1.6.1', 'org.slf4j:jcl-over-slf4j:1.6.1'
+}
