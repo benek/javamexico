@@ -134,7 +134,6 @@ public class TestPreguntas {
 		Respuesta r = qdao.addRespuesta("Segun yo si se puede, pero no recuerdo con que anotaciones es", p, u3);
 		qdao.addComentario("Chale pues cuando te acuerdes me dices, no?", r, u1);
 
-		try { Thread.sleep(5432); } catch (InterruptedException ex) {}
 		p = new Pregunta();
 		p.setTitulo("Patron OSIV en Tapestry 5");
 		p.setPregunta("Alguien sabe como se puede implementar el patron 'open session in view' en Tapestry 5?");
@@ -145,7 +144,6 @@ public class TestPreguntas {
 		qdao.addTag("tapestry", p);
 		qdao.addTag("open-session-in-view", p);
 		r = qdao.addRespuesta("Si, hay una libreria tapestry-hibernate que da soporte precisamente para eso", p, u1);
-		try { Thread.sleep(5432); } catch (InterruptedException ex) {}
 		qdao.addComentario("Pero como funciona o que?", r, u3);
 		qdao.addComentario("Te inyecta un SessionFactory en la pagina y lo cierra al final del ciclo request-response", p, u1);
 		qdao.vota(u2, r, true);

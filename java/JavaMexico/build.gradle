@@ -1,9 +1,12 @@
 apply plugin:'war'
+apply plugin:'jetty'
 version='2.0'
 
 dependencies {
 	compile project(':daos-hib3'), "org.springframework:spring-web:${springVersion}",
 		"org.apache.tapestry:tapestry-core:${tapestryVersion}",
 		"org.apache.tapestry:tapestry-spring:${tapestryVersion}"
+	runtime 'c3p0:c3p0:0.9.1.2', 'postgresql:postgresql:8.4-702.jdbc4',
+		'org.hibernate:hibernate-oscache:3.3.2.GA'
 	testCompile "org.apache.tapestry:tapestry-test:${tapestryVersion}"
 }
