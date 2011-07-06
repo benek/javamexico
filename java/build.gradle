@@ -10,6 +10,8 @@ allprojects {
 
 //Le ponemos algunas propiedades a todos los subproyectos
 subprojects {
+	apply plugin:'eclipse'
+
 	repositories {
 		mavenLocal()
 		mavenCentral()
