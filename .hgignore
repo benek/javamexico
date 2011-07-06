@@ -11,6 +11,10 @@ mockups/.settings
 JavaMexico/.settings
 daos-hib3/.settings
 daos-hib3/target
-
+core/build
+daos-hib3/build
+JavaMexico/build
+build
+.gradle
 #Ignorar las librerias del lib
 core/lib/*.jar
