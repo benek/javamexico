@@ -9,8 +9,6 @@
 
 <context:annotation-config />
 
-<bean class="org.javamexico.test.Setup" />
-
 <!-- se puede poner otro aqui como postgres.xml -->
 <import resource="h2.xml" />
 

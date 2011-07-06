@@ -50,13 +50,8 @@ public class TestUsuarios {
 		} else {
 			System.out.printf("Tags de %s: %s%n", u2.getUsername(), u2.getTags());
 		}
-		try {
-			udao.addTag("spring", u1);
-			udao.addTag("hibernate", u2);
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		}
-		try { Thread.sleep(1000); } catch (InterruptedException ex) {}
+		udao.addTag("spring", u1);
+		udao.addTag("hibernate", u2);
 	}
 
 	@Test //esta prueba genera datos que se quedan en la base de datos
